@@ -26,21 +26,21 @@ IDs completos, prioridade e critério de aceite por requisito em [`project-conte
 
 | ID | Requisito | Prioridade | Status |
 |----|-----------|------------|--------|
-| RF-01 | Captura de tela inteira (monitor sob o cursor) por atalho global `Ctrl+Shift+1`, pelo card da Home e pelo menu da bandeja | Deve | motor implementado · App em implementação |
-| RF-02 | Seleção de região por `Ctrl+Shift+2`: overlay por monitor com frame congelado, máscara, borda + 8 handles, badge de tamanho, `Enter`/`Esc` | Deve | geometria implementada · overlay em implementação |
+| RF-01 | Captura de tela inteira (monitor principal) por atalho global `Ctrl+Shift+1`, pelo card da Home e pelo menu da bandeja | Deve | implementado e validado |
+| RF-02 | Seleção de região por `Ctrl+Shift+2`: overlay por monitor com frame congelado, máscara, borda + 8 handles, badge de tamanho, `Enter`/`Esc` | Deve | implementado e validado |
 | RF-03 | Salvar PNG sem perdas na pasta configurada; nunca sobrescrever; nome `SharpShot_yyyy-MM-dd_HH-mm-ss-fff.png` | Deve | implementado (Storage + Encoder) |
-| RF-04 | Notificação "Captura salva com sucesso!" com nome do arquivo e ações **Abrir pasta** / **Ver imagem** (desligável) | Deve | em implementação |
-| RF-05 | Ícone na bandeja com menu: Capturar tela inteira · Selecionar região · Abrir SharpShot · Abrir pasta de capturas · Sair | Deve | em implementação |
-| RF-06 | Atalhos configuráveis (editor por teclas), **Restaurar padrões**, detecção de conflito com outro app (`InfoBar`) | Deve | modelo implementado · UI em implementação |
-| RF-07 | Pasta de salvamento configurável com validação (caminho completo, nomes reservados, caracteres inválidos) e botão **Abrir pasta** | Deve | validação implementada · UI em implementação |
-| RF-08 | Iniciar com o Windows (chave `Run` do HKCU, `--minimizado` na bandeja) | Deve | em implementação |
-| RF-09 | Fechar = minimizar para a bandeja (configurável); **Sair** encerra e libera atalhos, bandeja e notificações | Deve | em implementação |
-| RF-10 | Tema: Seguir o sistema / Claro / Escuro | Deve | modelo implementado · UI em implementação |
-| RF-11 | Instância única (segunda execução ativa a primeira) | Deve | em implementação |
-| RF-12 | Janelas do SharpShot nunca aparecem na captura (`WDA_EXCLUDEFROMCAPTURE` + esconder + `DwmFlush`) | Deve | `CompositionSync` implementado · afinidade em implementação |
-| RF-13 | Página **Sobre** com versão, licença MIT, link do repositório e créditos de terceiros | Deveria | em implementação |
-| RF-14 | Logs em `%LOCALAPPDATA%\SharpShot\logs` para diagnóstico | Deveria | em implementação |
-| RF-15 | Linha de status na Home com o resultado da última captura (caminho) ou o erro classificado | Deveria | em implementação |
+| RF-04 | Notificação "Captura salva com sucesso!" com nome do arquivo e ações **Abrir pasta** / **Ver imagem** (desligável) | Deve | implementado |
+| RF-05 | Ícone na bandeja com menu: Capturar tela inteira · Selecionar região · Abrir SharpShot · Abrir pasta de capturas · Sair | Deve | implementado |
+| RF-06 | Atalhos configuráveis (editor por teclas), **Restaurar padrões**, detecção de conflito com outro app (`InfoBar`) | Deve | implementado e validado |
+| RF-07 | Pasta de salvamento configurável com validação (caminho completo, nomes reservados, caracteres inválidos) e botão **Abrir pasta** | Deve | validação implementada · UI implementado |
+| RF-08 | Iniciar com o Windows (chave `Run` do HKCU, `--minimizado` na bandeja) | Deve | implementado |
+| RF-09 | Fechar = minimizar para a bandeja (configurável); **Sair** encerra e libera atalhos, bandeja e notificações | Deve | implementado |
+| RF-10 | Tema: Seguir o sistema / Claro / Escuro | Deve | implementado e validado |
+| RF-11 | Instância única (segunda execução ativa a primeira) | Deve | implementado |
+| RF-12 | Janelas do SharpShot nunca aparecem na captura (`WDA_EXCLUDEFROMCAPTURE` + esconder + `DwmFlush`) | Deve | `CompositionSync` implementado · afinidade implementado |
+| RF-13 | Página **Sobre** com versão, licença MIT, link do repositório e créditos de terceiros | Deveria | implementado |
+| RF-14 | Logs em `%LOCALAPPDATA%\SharpShot\logs` para diagnóstico | Deveria | implementado |
+| RF-15 | Linha de status na Home com o resultado da última captura (caminho) ou o erro classificado | Deveria | implementado |
 
 ## Requisitos não-funcionais (resumo)
 

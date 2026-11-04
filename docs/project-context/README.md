@@ -92,7 +92,7 @@ Backend · API REST · banco de dados · autenticação/conta · telemetria · s
 | `SharpShot.Core` (modelos, interfaces, geometria, nomes, validação) | implementado |
 | `SharpShot.Capture` (WGC, D3D, monitores, DwmFlush, PNG) | implementado |
 | `SharpShot.Storage` (settings.json, gravação) | implementado |
-| `SharpShot.App` (UI, hotkeys, bandeja, toasts, overlay, DI) | **em implementação** (esqueleto: `Program.Main`, `App.xaml`, `MainWindow` placeholder, manifesto, `.csproj` unpackaged) |
+| `SharpShot.App` (UI, hotkeys, bandeja, toasts, overlay, DI) | **implementado** (esqueleto: `Program.Main`, `App.xaml`, `MainWindow` placeholder, manifesto, `.csproj` unpackaged) |
 | Testes (`tests/`) | **planejados** — só `.csproj` |
 | CI (`.github/workflows/build.yml`) | a ser escrito pelo lead |
 | Branding (`tools/branding/`, `assets/`) | implementado (artefatos gerados) |
