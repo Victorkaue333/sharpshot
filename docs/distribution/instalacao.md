@@ -20,8 +20,8 @@ Nada é instalado fora da pasta até você ligar opções específicas (abaixo).
 | Configurações | `%LOCALAPPDATA%\SharpShot\settings.json` (+ `settings.json.tmp` transitório, `settings.json.corrupt-*` se houver backup) | Primeira gravação de configuração | `SettingsService` (implementado) |
 | Logs | `%LOCALAPPDATA%\SharpShot\logs\*.log` | Primeira execução | App (`FileLoggerProvider`) |
 | Capturas | `<Imagens>\SharpShot\SharpShot_*.png` (padrão) ou a pasta configurada | Primeira captura | `ScreenshotStorageService` (implementado) |
-| Iniciar com o Windows | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` → valor `SharpShot` = `"<pasta>\SharpShot.exe" --minimized` | Só se a opção for ligada | App (em implementação) |
-| Registro de notificações | Registro por usuário do `AppNotificationManager` (AUMID `SharpShot` + servidor COM de ativação apontando para o `.exe`), em `HKCU\Software\Classes\…` | Primeira execução (`Register()`), se suportado | App (em implementação) |
+| Iniciar com o Windows | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` → valor `SharpShot` = `"<pasta>\SharpShot.exe" --minimized` | Só se a opção for ligada | App (implementado) |
+| Registro de notificações | Registro por usuário do `AppNotificationManager` (AUMID `SharpShot` + servidor COM de ativação apontando para o `.exe`), em `HKCU\Software\Classes\…` | Primeira execução (`Register()`), se suportado | App (implementado) |
 
 Não toca: `HKLM`, `Program Files`, `ProgramData`, pasta Inicializar, serviços, tarefas agendadas, associações de arquivo, variáveis de ambiente, firewall (não há rede).
 

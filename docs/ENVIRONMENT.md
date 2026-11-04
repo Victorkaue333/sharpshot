@@ -67,7 +67,7 @@ flowchart LR
 | `%LOCALAPPDATA%` (`SpecialFolder.LocalApplicationData`, `Create`) | `SettingsService.GetApplicationDataDirectory` | `SharpShot\settings.json`, `logs\` | Criado se não existir |
 | Pasta **Imagens** (`SpecialFolder.MyPictures`, `DoNotVerify`) | `ScreenshotStorageService` | Pasta padrão `…\SharpShot` | `%USERPROFILE%\Pictures\SharpShot` |
 | `%VARIAVEL%` dentro de `saveDirectory` | `ResolveDirectory` / `ValidateDirectory` (`Environment.ExpandEnvironmentVariables`) | Permite `%USERPROFILE%\Capturas` no `settings.json` | Caminho inválido → pasta padrão |
-| `HKCU\…\Run` | App (em implementação) | Iniciar com o Windows | — |
+| `HKCU\…\Run` | App (implementado) | Iniciar com o Windows | — |
 | Tema do Windows | WinUI (`RequestedTheme`) quando `theme = "System"` | Claro/escuro | — |
 | DPI por monitor | `GetDpiForMonitor` | Escala | 96 |
 
