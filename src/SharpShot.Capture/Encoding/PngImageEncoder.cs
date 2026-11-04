@@ -34,6 +34,8 @@ public sealed class PngImageEncoder : IImageEncoder
     public async Task<byte[]> EncodeAsync(PixelBuffer pixels, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(pixels);
+        // Observe cancellation deterministically: WIC operations may complete before the token is checked.
+        cancellationToken.ThrowIfCancellationRequested();
         try
         {
             using var stream = new InMemoryRandomAccessStream();

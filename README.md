@@ -19,7 +19,15 @@
 
 > **Capture a tela exatamente como ela é.** Ferramenta nativa e leve de captura de tela para Windows 10/11 — tela inteira ou região, salva em **PNG sem perdas**, em pixels físicos, com um atalho de teclado. Sem conta, sem nuvem, sem telemetria.
 
-**Repositório:** [github.com/Victorkaue333/sharpshot](https://github.com/Victorkaue333/sharpshot) · **Autor:** Victor Alves · **Licença:** MIT · **Status:** em desenvolvimento — MVP `0.1.0` (todos os projetos implementados; 320 testes automatizados verdes; captura, overlay, notificações e configurações validados na máquina do autor — ver [`docs/project-context/criterios-de-aceitacao.md`](docs/project-context/criterios-de-aceitacao.md)).
+<p align="center">
+  <a href="https://github.com/Victorkaue333/sharpshot/releases/latest/download/SharpShot-0.1.0-win-x64.zip">
+    <img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20Baixar%20SharpShot%200.1.0-Windows%2010%2F11%20x64%20%C2%B7%2066%20MB-FFAA35?style=for-the-badge&labelColor=1B2230" alt="Baixar SharpShot 0.1.0 para Windows x64">
+  </a>
+</p>
+
+> **Instalação:** descompacte o zip em qualquer pasta e abra `SharpShot.exe`. Nada a instalar (.NET, Windows App SDK e runtime VC++ já vêm na pasta). Todas as versões: [Releases](https://github.com/Victorkaue333/sharpshot/releases).
+
+**Repositório:** [github.com/Victorkaue333/sharpshot](https://github.com/Victorkaue333/sharpshot) · **Autor:** Victor Alves · **Licença:** MIT · **Status:** `0.1.0` publicada em 04/nov/2026 (todos os projetos implementados; 320 testes automatizados verdes; captura, overlay, notificações e configurações validados na máquina do autor — ver [`docs/project-context/criterios-de-aceitacao.md`](docs/project-context/criterios-de-aceitacao.md)).
 
 ---
 

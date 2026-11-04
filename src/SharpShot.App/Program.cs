@@ -75,7 +75,7 @@ public static class Program
                 }
             });
 
-            User32.CoWaitForMultipleObjects(User32.CwmoDefault, User32.Infinite, 1, [handle], out _);
+            _ = User32.CoWaitForMultipleObjects(User32.CwmoDefault, User32.Infinite, 1, [handle], out _);
         }
         finally
         {
