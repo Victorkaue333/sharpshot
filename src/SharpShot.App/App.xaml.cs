@@ -116,6 +116,27 @@ public partial class App : Application
     /// <summary>True while the user chose to keep SharpShot in the tray when the window closes.</summary>
     public bool ShouldHideOnClose => Settings.Current.MinimizeToTray && !_exiting;
 
+    /// <summary>Called when the main window hid itself to the tray; shows the one-time tray notice.</summary>
+    public async void OnHiddenToTray()
+    {
+        try
+        {
+            if (Settings.Current.TrayHintShown)
+            {
+                return;
+            }
+
+            _notifications?.ShowTrayHint();
+            var snapshot = Settings.Current.Clone();
+            snapshot.TrayHintShown = true;
+            await Settings.SaveAsync(snapshot);
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogWarning(ex, "Could not record the tray hint flag.");
+        }
+    }
+
     private ServiceProvider BuildServices(DispatcherQueue dispatcher)
     {
         var services = new ServiceCollection();

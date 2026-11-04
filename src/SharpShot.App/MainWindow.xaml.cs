@@ -78,6 +78,7 @@ public sealed partial class MainWindow : Window
             args.Cancel = true;
             sender.Hide();
             HideRequested?.Invoke(this, EventArgs.Empty);
+            App.Current.OnHiddenToTray();
             return;
         }
 

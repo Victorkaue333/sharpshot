@@ -1,5 +1,5 @@
-[Não publicado]: https://github.com/Victorkaue333/sharpshot/compare/3ab422b...HEAD
-[0.1.0]: https://github.com/Victorkaue333/sharpshot/tree/3ab422b
+[Não publicado]: https://github.com/Victorkaue333/sharpshot/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Victorkaue333/sharpshot/releases/tag/v0.1.0
 
 # Changelog — SharpShot
 
@@ -10,9 +10,21 @@ Tipos usados: Adicionado, Alterado, Corrigido, Removido, Depreciado, Segurança.
 
 > Contexto e decisões fixas: [`../CLAUDE.md`](../CLAUDE.md) · Visão geral: [`../README.md`](../README.md).
 > Projeto em **desenvolvimento inicial** (pré-1.0); contratos internos podem mudar sem aviso.
-> **Nenhuma versão foi publicada ainda** (tag `v0.1.0` não criada). Todo o trabalho abaixo está commitado na `main` em commits por funcionalidade (scaffold → core → storage → capture → branding → app → tests → ci → build → fix), ainda sem push.
+> `0.1.0` publicada em 04/nov/2026 (tag `v0.1.0`, Release no GitHub com `SharpShot-0.1.0-win-x64.zip`). O que está em *Não publicado* sai na `0.1.1`.
 
 ## [Não publicado][Não publicado]
+
+### Adicionado
+
+- **Aviso único de bandeja** — na primeira vez que a janela é fechada com *Minimizar para a bandeja* ligado, um toast explica que o SharpShot continua na bandeja (ícone laranja perto do relógio) e como abrir/capturar/sair; campo `trayHintShown` em `settings.json`. *Porquê:* no Windows 11 ícones novos ficam ocultos no menu "^" e o usuário não via o app.
+- README com botão de download direto da release e instruções para fixar o ícone na bandeja.
+
+### Corrigido
+
+- Janela de mensagens da bandeja/atalhos passou de *message-only* (`HWND_MESSAGE`) para janela oculta comum (`WS_POPUP` + `WS_EX_TOOLWINDOW`): janelas message-only não recebem o broadcast `TaskbarCreated` (o ícone não voltaria após reiniciar o Explorer) nem podem ser *foreground* do menu popup. Menu da bandeja validado (Abrir, Sair) em 04/nov/2026.
+- `PngImageEncoder` observa o `CancellationToken` antes de iniciar o WIC (teste de cancelamento era instável no runner do GitHub).
+
+## [0.1.0][0.1.0] — 2026-11-04
 
 ### Adicionado
 

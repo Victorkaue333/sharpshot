@@ -151,9 +151,14 @@ internal sealed class TrayIconService : IDisposable
             }
 
             // Required so the menu closes when the user clicks elsewhere (KB 135788).
-            User32.SetForegroundWindow(_messageWindow.Handle);
+            if (!User32.SetForegroundWindow(_messageWindow.Handle))
+            {
+                _logger.LogWarning("SetForegroundWindow failed before showing the tray menu ({Error}).", Marshal.GetLastWin32Error());
+            }
+
             var command = User32.TrackPopupMenuEx(menu, User32.TpmLeftAlign | User32.TpmRightButton | User32.TpmReturnCmd | User32.TpmNoNotify, x, y, _messageWindow.Handle, 0);
             User32.PostMessageW(_messageWindow.Handle, 0, 0, 0);
+            _logger.LogInformation("Tray menu closed with command {Command}.", command);
 
             if (command != 0 && Enum.IsDefined(typeof(TrayAction), command))
             {

@@ -24,6 +24,9 @@ public sealed class AppSettings
 
     public ThemeMode Theme { get; set; } = ThemeMode.System;
 
+    /// <summary>True after the one-time "SharpShot keeps running in the tray" notice has been shown.</summary>
+    public bool TrayHintShown { get; set; }
+
     public static AppSettings CreateDefault() => new();
 
     public AppSettings Clone() => (AppSettings)MemberwiseClone();

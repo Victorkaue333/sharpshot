@@ -22,6 +22,8 @@ internal static class User32
     public const int NinKeySelect = 0x0401;
 
     public const nint HwndMessage = -3;
+    public const uint WsPopup = 0x80000000;
+    public const uint WsExToolWindow = 0x00000080;
 
     public const uint MfString = 0x0000;
     public const uint MfSeparator = 0x0800;

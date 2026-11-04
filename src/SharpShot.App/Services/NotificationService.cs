@@ -12,6 +12,9 @@ public interface INotificationService
     void ShowCaptureSaved(CaptureResult result);
 
     void ShowCaptureFailed(string message);
+
+    /// <summary>One-time notice that the app keeps running in the tray after the window is closed.</summary>
+    void ShowTrayHint();
 }
 
 /// <summary>
@@ -118,6 +121,31 @@ internal sealed class NotificationService : INotificationService, IDisposable
         catch (Exception ex)
         {
             _logger.LogWarning(ex, "Failed to show the failure notification.");
+        }
+    }
+
+    public void ShowTrayHint()
+    {
+        if (!_registered)
+        {
+            return;
+        }
+
+        try
+        {
+            var builder = new AppNotificationBuilder()
+                .AddText("O SharpShot continua na bandeja")
+                .AddText("Clique no ícone laranja perto do relógio para abrir; botão direito para capturar ou sair. Os atalhos continuam ativos.");
+            if (File.Exists(_logoPath))
+            {
+                builder.SetAppLogoOverride(new Uri(_logoPath), AppNotificationImageCrop.Default);
+            }
+
+            Show(builder.BuildNotification());
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to show the tray hint notification.");
         }
     }
 

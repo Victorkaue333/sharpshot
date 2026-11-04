@@ -5,8 +5,8 @@ using SharpShot.App.Interop;
 namespace SharpShot.App.Infrastructure;
 
 /// <summary>
-/// A hidden message-only window owned by the UI thread. It receives WM_HOTKEY for global hotkeys and
-/// the Shell_NotifyIcon callback for the tray icon, and re-dispatches them as .NET events.
+/// A hidden top-level window owned by the UI thread. It receives WM_HOTKEY for global hotkeys, the
+/// Shell_NotifyIcon callback for the tray icon and the TaskbarCreated broadcast, and re-dispatches them as .NET events.
 /// The WndProc delegate is kept in a field so the GC never collects it while the window exists.
 /// </summary>
 internal sealed class MessageWindow : IDisposable
@@ -39,7 +39,11 @@ internal sealed class MessageWindow : IDisposable
             }
         }
 
-        Handle = User32.CreateWindowExW(0, ClassName, "SharpShot", 0, 0, 0, 0, 0, User32.HwndMessage, 0, instance, 0);
+        // A hidden top-level window (not HWND_MESSAGE): message-only windows never receive the
+        // "TaskbarCreated" broadcast and cannot own a popup menu with keyboard focus.
+        Handle = User32.CreateWindowExW(
+            User32.WsExToolWindow, ClassName, "SharpShot", User32.WsPopup,
+            0, 0, 0, 0, 0, 0, instance, 0);
         if (Handle == 0)
         {
             throw new Win32Exception(Marshal.GetLastWin32Error(), "CreateWindowEx failed for the message window.");

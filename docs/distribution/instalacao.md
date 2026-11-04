@@ -25,6 +25,10 @@ Nada é instalado fora da pasta até você ligar opções específicas (abaixo).
 
 Não toca: `HKLM`, `Program Files`, `ProgramData`, pasta Inicializar, serviços, tarefas agendadas, associações de arquivo, variáveis de ambiente, firewall (não há rede).
 
+## Ícone na bandeja sempre visível
+
+O Windows 11 esconde ícones novos no menu "^" (ícones ocultos). Para o SharpShot ficar sempre à vista: *Configurações → Personalização → Barra de tarefas → Outros ícones da bandeja → SharpShot: Ativado*, ou arraste o ícone do "^" para a barra. Nenhum app consegue fazer isso sozinho; é uma escolha do usuário. Clique esquerdo abre a janela; botão direito mostra Capturar tela inteira · Selecionar região · Abrir SharpShot · Abrir pasta de capturas · Sair.
+
 ## Iniciar com o Windows
 
 Configurações → **Geral** → *Iniciar com o Windows*. O app escreve o valor acima; o Windows executa `SharpShot.exe --minimized` no logon e o app nasce na bandeja. Desligar a opção remove o valor. Se você desativar pelo **Gerenciador de Tarefas → Aplicativos de inicialização**, o Windows marca o item como desativado (em `…\Explorer\StartupApproved\Run`) — o app lê o estado real ao abrir Configurações e mostra o toggle desligado.

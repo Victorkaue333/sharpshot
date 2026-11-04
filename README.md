@@ -12,7 +12,7 @@
 [![Windows App SDK 2.6.5](https://img.shields.io/badge/Windows%20App%20SDK-2.6.5-0078D4)](https://learn.microsoft.com/windows/apps/windows-app-sdk/)
 [![Windows 10 2004+ / 11](https://img.shields.io/badge/Windows-10%20(2004%2B)%20%7C%2011-0078D4?logo=windows&logoColor=white)](docs/distribution/compatibilidade.md)
 [![x64](https://img.shields.io/badge/arch-x64-6B7280)](docs/distribution/compatibilidade.md)
-[![Versão 0.1.0](https://img.shields.io/badge/vers%C3%A3o-0.1.0-FFAA35)](docs/CHANGELOG.md)
+[![Versão 0.1.1](https://img.shields.io/badge/vers%C3%A3o-0.1.1-FFAA35)](docs/CHANGELOG.md)
 [![Status: em desenvolvimento (MVP)](https://img.shields.io/badge/status-em%20desenvolvimento%20(MVP)-FF7A00)](docs/PRD.md)
 [![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-22C55E)](LICENSE)
 [![Build](https://github.com/Victorkaue333/sharpshot/actions/workflows/build.yml/badge.svg)](https://github.com/Victorkaue333/sharpshot/actions/workflows/build.yml)
@@ -20,14 +20,16 @@
 > **Capture a tela exatamente como ela é.** Ferramenta nativa e leve de captura de tela para Windows 10/11 — tela inteira ou região, salva em **PNG sem perdas**, em pixels físicos, com um atalho de teclado. Sem conta, sem nuvem, sem telemetria.
 
 <p align="center">
-  <a href="https://github.com/Victorkaue333/sharpshot/releases/latest/download/SharpShot-0.1.0-win-x64.zip">
-    <img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20Baixar%20SharpShot%200.1.0-Windows%2010%2F11%20x64%20%C2%B7%2066%20MB-FFAA35?style=for-the-badge&labelColor=1B2230" alt="Baixar SharpShot 0.1.0 para Windows x64">
+  <a href="https://github.com/Victorkaue333/sharpshot/releases/latest/download/SharpShot-0.1.1-win-x64.zip">
+    <img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20Baixar%20SharpShot%200.1.1-Windows%2010%2F11%20x64%20%C2%B7%2066%20MB-FFAA35?style=for-the-badge&labelColor=1B2230" alt="Baixar SharpShot 0.1.1 para Windows x64">
   </a>
 </p>
 
 > **Instalação:** descompacte o zip em qualquer pasta e abra `SharpShot.exe`. Nada a instalar (.NET, Windows App SDK e runtime VC++ já vêm na pasta). Todas as versões: [Releases](https://github.com/Victorkaue333/sharpshot/releases).
+>
+> **Bandeja:** o SharpShot fica sempre na bandeja (ícone laranja perto do relógio); fechar a janela só a oculta e os atalhos continuam ativos. No Windows 11 ícones novos ficam escondidos no menu "^" — para deixá-lo sempre visível: *Configurações → Personalização → Barra de tarefas → Outros ícones da bandeja → SharpShot: Ativado* (ou arraste o ícone do "^" para a barra).
 
-**Repositório:** [github.com/Victorkaue333/sharpshot](https://github.com/Victorkaue333/sharpshot) · **Autor:** Victor Alves · **Licença:** MIT · **Status:** `0.1.0` publicada em 04/nov/2026 (todos os projetos implementados; 320 testes automatizados verdes; captura, overlay, notificações e configurações validados na máquina do autor — ver [`docs/project-context/criterios-de-aceitacao.md`](docs/project-context/criterios-de-aceitacao.md)).
+**Repositório:** [github.com/Victorkaue333/sharpshot](https://github.com/Victorkaue333/sharpshot) · **Autor:** Victor Alves · **Licença:** MIT · **Status:** `0.1.1` (04/nov/2026) (todos os projetos implementados; 320 testes automatizados verdes; captura, overlay, notificações e configurações validados na máquina do autor — ver [`docs/project-context/criterios-de-aceitacao.md`](docs/project-context/criterios-de-aceitacao.md)).
 
 ---
 
@@ -276,8 +278,8 @@ Lista completa, com flags e saídas esperadas: [`docs/development/comandos.md`](
 | Comando | O que faz |
 | ------- | ---------- |
 | `pwsh tools/release/make-release.ps1` | `dotnet publish` (Release, win-x64, self-contained) → copia o runtime VC++ (`vcruntime140*.dll`, `msvcp140*.dll`, `concrt140.dll`) do Redist do Visual Studio → remove `.pdb` → gera `artifacts/release/SharpShot-<versão>-win-x64.zip` + `.sha256` |
-| `git tag v0.1.0 && git push origin main --tags` | Dispara `.github/workflows/release.yml`: testes, pacote e **GitHub Release com o zip anexado** |
-| `gh release create v0.1.0 artifacts/release/SharpShot-0.1.0-win-x64.zip` | Alternativa manual com o zip gerado localmente |
+| `git tag v0.1.1 && git push origin main --tags` | Dispara `.github/workflows/release.yml`: testes, pacote e **GitHub Release com o zip anexado** |
+| `gh release create v0.1.1 artifacts/release/SharpShot-0.1.1-win-x64.zip` | Alternativa manual com o zip gerado localmente |
 
 > Validado em 04/nov/2026: zip de 66,5 MB; o `SharpShot.exe` publicado abre, registra atalhos e captura. Sem instalador: descompacte e execute. Detalhes em [`docs/distribution/`](docs/distribution/README.md).
 

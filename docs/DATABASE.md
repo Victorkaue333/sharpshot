@@ -58,6 +58,7 @@ Exemplo com os **valores padrão** (o que `AppSettings.CreateDefault()` produz):
 | `saveDirectory` | string \| null | `string?` | `null` | `null`/vazio/só espaços = pasta padrão. Pode conter `%VARIAVEL%` (expandido em `ResolveDirectory`). Não é validado ao salvar: a validação acontece na UI (`ValidateDirectory`) e no `SaveAsync` |
 | `theme` | string | `ThemeMode` | `"System"` | `"System"` · `"Light"` · `"Dark"` |
 
+| `trayHintShown` | bool | `false` | Vira `true` após o aviso único "O SharpShot continua na bandeja" (mostrado na primeira vez que a janela é fechada com *Minimizar para a bandeja* ligado). |
 Nomes de tecla aceitos em hotkeys: `0`–`9`, `A`–`Z`, `F1`–`F24`, `Num0`–`Num9`, `Num*`, `Num+`, `Num-`, `Num.`, `Num/`, `Backspace`, `Tab`, `Enter`, `Pause`, `CapsLock`, `Esc`, `Space`, `PageUp`, `PageDown`, `End`, `Home`, `Left`, `Up`, `Right`, `Down`, `PrintScreen`, `Insert`, `Delete`, `NumLock`, `ScrollLock`, `;`, `=`, `,`, `-`, `.`, `/`, `` ` ``, `[`, `\`, `]`, `'` (ver `VirtualKeyNames`). Um hotkey **precisa de pelo menos um modificador**.
 
 ### Ciclo de vida
