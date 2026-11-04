@@ -46,7 +46,7 @@ flowchart LR
 | `Directory.Packages.props` | `ManagePackageVersionsCentrally` | `true` | Versão de pacote só aqui; `.csproj` não tem `Version=` |
 | `SharpShot.App.csproj` | `WindowsPackageType` | `None` | Unpackaged (ADR-01) |
 | | `SelfContained` / `WindowsAppSDKSelfContained` | `true` / `true` | Runtime .NET e Windows App SDK copiados |
-| | `RuntimeIdentifiers` | `win-x64;win-arm64` | Uma pasta por arquitetura |
+| | `RuntimeIdentifiers` | `win-x64` | Uma pasta por arquitetura |
 | | `PublishTrimmed` / `PublishReadyToRun` | `false` / `false` | Sem trimming nem R2R no MVP |
 | | `EnableMsixTooling` | `true` | Mantém o caminho MSIX disponível (secundário) |
 | | `TargetPlatformMinVersion` | `10.0.19041.0` | Windows 10 2004 |
@@ -57,7 +57,7 @@ flowchart LR
 | O quê | Caminho |
 |-------|---------|
 | Build Debug x64 do App | `src\SharpShot.App\bin\x64\Debug\net10.0-windows10.0.26100.0\win-x64\` |
-| Publish | `artifacts/publish/win-x64/` e `win-arm64/` (`.gitignore`) |
+| Publish | `artifacts/publish/win-x64/` (`.gitignore`) |
 | Intermediários | `obj/` em cada projeto (`.gitignore`) — **não compartilhar builds paralelos no mesmo checkout**: dois `dotnet build` simultâneos corrompem `obj/` |
 
 ## Ambiente de execução (o que o app lê do sistema)
@@ -81,7 +81,7 @@ Qualquer outro argumento é ignorado. Uma segunda instância passa a ativação 
 
 ### Requisitos do sistema do usuário
 
-Windows 10 versão 2004 (build 19041) ou superior, ou Windows 11; x64 ou arm64; sessão de desktop interativa (WGC não funciona em serviço/sessão 0). Sem instalação de runtime. Detalhe: [`distribution/compatibilidade.md`](distribution/compatibilidade.md).
+Windows 10 versão 2004 (build 19041) ou superior, ou Windows 11; x64; sessão de desktop interativa (WGC não funciona em serviço/sessão 0). Sem instalação de runtime. Detalhe: [`distribution/compatibilidade.md`](distribution/compatibilidade.md).
 
 ## CI
 

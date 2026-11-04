@@ -47,7 +47,7 @@ IDs completos, prioridade e critério de aceite por requisito em [`project-conte
 Detalhe e método de verificação em [`project-context/requisitos.md`](project-context/requisitos.md#requisitos-não-funcionais).
 
 - **RNF-01 · Fidelidade** — PNG byte-idêntico ao frame capturado (round-trip pela `BitmapDecoder`); sem reamostragem; captura em pixels físicos.
-- **RNF-02 · Compatibilidade** — Windows 10 2004 (build 19041)+ e Windows 11; x64 e arm64; self-contained.
+- **RNF-02 · Compatibilidade** — Windows 10 2004 (build 19041)+ e Windows 11; x64 (arm64 em versão futura); self-contained.
 - **RNF-03 · DPI** — PerMonitorV2; seleção exata em monitores com escalas diferentes e coordenadas negativas.
 - **RNF-04 · Privacidade** — nenhuma conexão de rede; nenhuma telemetria; tudo em `HKCU`/`%LOCALAPPDATA%`/pasta do usuário.
 - **RNF-05 · Robustez** — todo erro de captura e de gravação é classificado (`CaptureErrorKind`, `SaveErrorKind`) e explicado em pt-BR; a captura nunca falha em silêncio; nunca sobrescreve arquivo.

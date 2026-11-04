@@ -2,7 +2,7 @@
 
 Registro das decisões técnicas do projeto (ADRs). Cada decisão é uma entrada **imutável**: em vez de editar uma decisão antiga, adiciona-se uma nova que a substitua — o histórico é a memória do projeto.
 
-> Os números de ADR são **estáveis** e referenciados por outros docs (não renumerar). ADR-01..15 nasceram juntos, em 04/nov/2026, consolidando as decisões fixas tomadas durante o desenho do MVP; a partir daqui, toda decisão nova ganha o próximo número. "Implementada" significa **verificada no código** nesta data; "em implementação" significa que o projeto `SharpShot.App` ainda está sendo escrito.
+> Os números de ADR são **estáveis** e referenciados por outros docs (não renumerar). ADR-01..15 nasceram juntos, em 04/nov/2026, consolidando as decisões fixas tomadas durante o desenho do MVP; a partir daqui, toda decisão nova ganha o próximo número. "Implementada" significa **verificada no código** em 04/nov/2026 (todos os projetos, incluindo `SharpShot.App`, estão implementados).
 > Fonte da verdade das decisões fixas: [`../CLAUDE.md`](../CLAUDE.md) · Arquitetura: [`ARCHITECTURE.md`](ARCHITECTURE.md) · Detalhes técnicos: [`architecture/`](architecture/README.md) e [`capture-engine/`](capture-engine/README.md).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
@@ -14,13 +14,13 @@ Registro das decisões técnicas do projeto (ADRs). Cada decisão é uma entrada
 | ADR-02 | 04/nov/2026 | Windows Graphics Capture em vez de GDI ou Desktop Duplication | Aceita · implementada |
 | ADR-03 | 04/nov/2026 | `SoftwareBitmap.CreateCopyFromSurfaceAsync` em vez de binding D3D11 | Aceita · implementada |
 | ADR-04 | 04/nov/2026 | PNG sem perdas como único formato do MVP | Aceita · implementada |
-| ADR-05 | 04/nov/2026 | `RegisterHotKey` em vez de hook de teclado de baixo nível | Aceita · em implementação (App) |
-| ADR-06 | 04/nov/2026 | `Shell_NotifyIcon` e menu popup Win32 para a bandeja | Aceita · em implementação (App) |
-| ADR-07 | 04/nov/2026 | `AppNotificationManager` para notificações | Aceita · em implementação (App) |
-| ADR-08 | 04/nov/2026 | Chave `Run` do HKCU para iniciar com o Windows | Aceita · em implementação (App) |
+| ADR-05 | 04/nov/2026 | `RegisterHotKey` em vez de hook de teclado de baixo nível | Aceita · implementada |
+| ADR-06 | 04/nov/2026 | `Shell_NotifyIcon` e menu popup Win32 para a bandeja | Aceita · implementada |
+| ADR-07 | 04/nov/2026 | `AppNotificationManager` para notificações | Aceita · implementada |
+| ADR-08 | 04/nov/2026 | Chave `Run` do HKCU para iniciar com o Windows | Aceita · implementada |
 | ADR-09 | 04/nov/2026 | Configurações em JSON com System.Text.Json source generation | Aceita · implementada |
 | ADR-10 | 04/nov/2026 | Seleção de região sobre frame congelado, limitada a um monitor | Aceita · Core implementado · overlay em implementação |
-| ADR-11 | 04/nov/2026 | Sem framework MVVM | Aceita · em implementação (App) |
+| ADR-11 | 04/nov/2026 | Sem framework MVVM | Aceita · implementada |
 | ADR-12 | 04/nov/2026 | Core sem dependência de Windows | Aceita · implementada |
 | ADR-13 | 04/nov/2026 | Branding gerado de uma única fonte vetorial em Python | Aceita · implementada |
 | ADR-14 | 04/nov/2026 | Interface só em pt-BR no MVP | Aceita · implementada |
@@ -126,7 +126,7 @@ Fonte: [`capture-engine/png.md`](capture-engine/png.md).
 
 ## ADR-05 — `RegisterHotKey` em vez de hook de teclado de baixo nível
 
-- **Data:** 04/nov/2026 · **Status:** Aceita · em implementação (App)
+- **Data:** 04/nov/2026 · **Status:** Aceita · implementada
 
 ### Contexto
 
@@ -149,7 +149,7 @@ Fonte: [`architecture/README.md`](architecture/README.md) · [`src/SharpShot.Cor
 
 ## ADR-06 — `Shell_NotifyIcon` e menu popup Win32 para a bandeja
 
-- **Data:** 04/nov/2026 · **Status:** Aceita · em implementação (App)
+- **Data:** 04/nov/2026 · **Status:** Aceita · implementada
 
 ### Contexto
 
@@ -172,7 +172,7 @@ Fonte: [`architecture/README.md`](architecture/README.md).
 
 ## ADR-07 — `AppNotificationManager` para notificações
 
-- **Data:** 04/nov/2026 · **Status:** Aceita · em implementação (App)
+- **Data:** 04/nov/2026 · **Status:** Aceita · implementada
 
 ### Contexto
 
@@ -196,7 +196,7 @@ Fonte: [`architecture/README.md`](architecture/README.md).
 
 ## ADR-08 — Chave `Run` do HKCU para iniciar com o Windows
 
-- **Data:** 04/nov/2026 · **Status:** Aceita · em implementação (App)
+- **Data:** 04/nov/2026 · **Status:** Aceita · implementada
 
 ### Contexto
 
@@ -267,7 +267,7 @@ Fonte: [`capture-engine/regiao.md`](capture-engine/regiao.md).
 
 ## ADR-11 — Sem framework MVVM
 
-- **Data:** 04/nov/2026 · **Status:** Aceita · em implementação (App)
+- **Data:** 04/nov/2026 · **Status:** Aceita · implementada
 
 ### Contexto
 

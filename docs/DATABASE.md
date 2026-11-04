@@ -135,8 +135,8 @@ O `AppNotificationManager` registra, por conta própria e por usuário, o AUMID 
 
 ## Lacunas conhecidas
 
-- [ ] Logger de arquivo, rotação e retenção: **em implementação** (App).
-- [ ] `startWithWindows` pode divergir da chave `Run` se o usuário desativar pelo Gerenciador de Tarefas; o App deve ler o registro ao abrir Configurações (**em implementação**).
+- [x] Logger de arquivo, rotação diária e retenção de 7 arquivos: implementado (`FileLoggerProvider`).
+- [ ] `startWithWindows` pode divergir da chave `Run` se o usuário desativar pelo Gerenciador de Tarefas; o App lê o registro ao abrir Configurações (`StartupService.IsEnabled`), mas não corrige o JSON automaticamente — melhoria futura.
 - [ ] Nenhum teste de round-trip de `settings.json` existe ainda (`tests/SharpShot.Core.Tests` tem só o `.csproj`).
 - [ ] Histórico de capturas (roadmap) pode trazer um banco local (SQLite) — decisão futura, ADR próprio.
 

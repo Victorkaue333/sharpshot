@@ -62,7 +62,7 @@ Não é público-alvo no MVP: quem precisa de editor/anotações, gravação de 
 - **Iniciar com o Windows** (`--minimized`).
 - **Tema** Sistema / Claro / Escuro.
 - **Instância única**, **logs locais**, página **Sobre**.
-- **x64 e arm64**, Windows 10 2004+ e 11, self-contained.
+- **x64** (arm64 em versão futura), Windows 10 2004+ e 11, self-contained.
 - UI em **pt-BR**.
 
 ### Roadmap (não implementado)
