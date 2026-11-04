@@ -1,6 +1,6 @@
 # Componentes e telas — Design system
 
-> Cada tela e peça do SharpShot: composição, controles WinUI 3 usados, textos em pt-BR e estados. É a especificação que o App (em implementação) segue; os mockups em `public/assets/` são referência de hierarquia, não de pixel.
+> Cada tela e peça do SharpShot: composição, controles WinUI 3 usados, textos em pt-BR e estados. É a especificação que o App segue (`src/SharpShot.App/Views` e `Components`); os mockups em `public/assets/` são referência de hierarquia, não de pixel.
 > Fontes: [`../PRD.md`](../PRD.md) · [`../project-context/requisitos.md`](../project-context/requisitos.md) · `AppSettings`/`HotkeyBinding` (verificados) · mockups `05/06/07-*.png`.
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 

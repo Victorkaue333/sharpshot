@@ -1,7 +1,7 @@
 # Temas — Design system
 
 > Como os três modos (Seguir o sistema · Claro · Escuro) se traduzem em tokens, como o App aplica a escolha e o que fica fora do controle do app (menu Win32, toast).
-> Fontes: `ThemeMode` em `SharpShot.Core` (verificado) · [`cores.md`](cores.md) · App (em implementação).
+> Fontes: `ThemeMode` em `SharpShot.Core` (verificado) · [`cores.md`](cores.md) · App (`src/SharpShot.App/Resources/Colors.xaml`, `Styles.xaml`, `Views/`).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Modelo

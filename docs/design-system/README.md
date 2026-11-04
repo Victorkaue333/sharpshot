@@ -1,7 +1,7 @@
 # Design system — SharpShot
 
 > Fonte canônica das decisões visuais do SharpShot: cores, tipografia, espaçamento, componentes, estados, ícones e temas. O guia rápido para quem escreve tela é [`../DESIGN.md`](../DESIGN.md); este diretório é o detalhe. A marca (logo, uso, versões) e o inventário de assets gerados são mantidos pelo agente de branding em [`branding.md`](branding.md) e [`assets.md`](assets.md).
-> Precedência: identidade aprovada (Conceito A — mockup [`public/assets/02-identidade-aprovada-e-ui.png`](../../public/assets/02-identidade-aprovada-e-ui.png)) → paleta em `tools/branding/generate_branding.py` → estes arquivos → `ResourceDictionary` do App (em implementação; quando existir, **ele** passa a ser a fonte executável e estes docs precisam espelhá-lo).
+> Precedência: identidade aprovada (Conceito A — mockup [`public/assets/02-identidade-aprovada-e-ui.png`](../../public/assets/02-identidade-aprovada-e-ui.png)) → paleta em `tools/branding/generate_branding.py` → estes arquivos → `ResourceDictionary` do App (`src/SharpShot.App/Resources/Colors.xaml` e `Styles.xaml` — fonte executável; estes docs devem espelhá-los).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Ordem de leitura
@@ -46,7 +46,7 @@ Nenhuma dessas imagens é captura do app rodando. Quando houver capturas reais, 
 
 ## Fonte executável
 
-Hoje a única fonte executável de cor é `tools/branding/generate_branding.py` (constantes `BACKGROUND`, `SURFACE`, `PRIMARY`, `PRIMARY_HOVER`, `TEXT_PRIMARY`, `TEXT_SECONDARY`, `SILVER_*`). O `ResourceDictionary` de tema do App está **em implementação**; a convenção de nomes está em [`cores.md`](cores.md) e [`temas.md`](temas.md). Quando ele existir, qualquer divergência entre ele e estes docs é bug de doc.
+As fontes executáveis de cor são `tools/branding/generate_branding.py` (constantes `BACKGROUND`, `SURFACE`, `PRIMARY`, `PRIMARY_HOVER`, `TEXT_PRIMARY`, `TEXT_SECONDARY`, `SILVER_*`, para os assets) e `src/SharpShot.App/Resources/Colors.xaml` (tema do App, dicionários Dark/Light/HighContrast, com os overrides de `SystemAccentColor*` em `App.xaml`); a convenção de nomes está em [`cores.md`](cores.md) e [`temas.md`](temas.md). Qualquer divergência entre eles e estes docs é bug de doc.
 
 ## Lacunas conhecidas
 

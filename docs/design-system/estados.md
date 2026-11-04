@@ -1,7 +1,7 @@
 # Estados — Design system
 
 > Como cada peça se comporta em repouso, hover, pressionado, foco, desabilitado, carregando, sucesso, erro, aviso e vazio. Regra: estado visual **sempre** acompanhado de estado acessível (`IsEnabled`, `AutomationProperties`, `InfoBar` com texto) — cor nunca é a única informação.
-> Fontes: estados padrão dos controles WinUI 3 · [`cores.md`](cores.md) · [`../architecture/erros.md`](../architecture/erros.md) · App (em implementação).
+> Fontes: estados padrão dos controles WinUI 3 · [`cores.md`](cores.md) · [`../architecture/erros.md`](../architecture/erros.md) · App (`src/SharpShot.App/Resources/Colors.xaml`, `Styles.xaml`, `Views/`).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Estados dos controles padrão

@@ -1,7 +1,7 @@
 # Ícones — Design system
 
 > Ícones funcionais (Segoe Fluent Icons), ícones do app/bandeja/notificação (gerados) e a regra que não se negocia: **o logo nunca é substituído por um ícone genérico**.
-> Fontes: `assets/icons/`, `src/SharpShot.App/Assets/`, `tools/branding/generate_branding.py` (verificados) · WinUI 3 (`FontIcon`) · App (em implementação).
+> Fontes: `assets/icons/`, `src/SharpShot.App/Assets/`, `tools/branding/generate_branding.py` (verificados) · WinUI 3 (`FontIcon`) · App (`src/SharpShot.App/Resources/Colors.xaml`, `Styles.xaml`, `Views/`).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Ícones funcionais (fonte do sistema)

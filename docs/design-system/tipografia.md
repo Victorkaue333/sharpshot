@@ -1,7 +1,7 @@
 # Tipografia — Design system
 
 > Uma família, a escala do Fluent, nenhuma fonte embutida.
-> Fontes: WinUI 3 (`TextBlock` styles) · [`../DESIGN.md`](../DESIGN.md) · App (em implementação).
+> Fontes: WinUI 3 (`TextBlock` styles) · [`../DESIGN.md`](../DESIGN.md) · App (`src/SharpShot.App/Resources/Colors.xaml`, `Styles.xaml`, `Views/`).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Família

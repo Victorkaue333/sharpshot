@@ -1,7 +1,7 @@
 # Espaçamento, forma e dimensões — Design system
 
 > Grade, padding, gaps, raio, elevação e tamanhos de janela. Tudo em DIP (unidades do XAML); o overlay é a única superfície que pensa em pixels físicos.
-> Fontes: recursos do WinUI 3 (`ControlCornerRadius`, `OverlayCornerRadius`) · mockups em `public/assets/` · App (em implementação).
+> Fontes: recursos do WinUI 3 (`ControlCornerRadius`, `OverlayCornerRadius`) · mockups em `public/assets/` · App (`src/SharpShot.App/Resources/Colors.xaml`, `Styles.xaml`, `Views/`).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Grade

@@ -19,7 +19,7 @@ Registro das decisões técnicas do projeto (ADRs). Cada decisão é uma entrada
 | ADR-07 | 04/nov/2026 | `AppNotificationManager` para notificações | Aceita · implementada |
 | ADR-08 | 04/nov/2026 | Chave `Run` do HKCU para iniciar com o Windows | Aceita · implementada |
 | ADR-09 | 04/nov/2026 | Configurações em JSON com System.Text.Json source generation | Aceita · implementada |
-| ADR-10 | 04/nov/2026 | Seleção de região sobre frame congelado, limitada a um monitor | Aceita · Core implementado · overlay em implementação |
+| ADR-10 | 04/nov/2026 | Seleção de região sobre frame congelado, limitada a um monitor | Aceita · implementada |
 | ADR-11 | 04/nov/2026 | Sem framework MVVM | Aceita · implementada |
 | ADR-12 | 04/nov/2026 | Core sem dependência de Windows | Aceita · implementada |
 | ADR-13 | 04/nov/2026 | Branding gerado de uma única fonte vetorial em Python | Aceita · implementada |
@@ -244,7 +244,7 @@ Fonte: [`DATABASE.md`](DATABASE.md) · [`src/SharpShot.Storage/Configuration/Set
 
 ## ADR-10 — Seleção de região sobre frame congelado, limitada a um monitor
 
-- **Data:** 04/nov/2026 · **Status:** Aceita · Core implementado · overlay em implementação
+- **Data:** 04/nov/2026 · **Status:** Aceita · implementada
 
 ### Contexto
 
