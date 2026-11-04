@@ -18,6 +18,10 @@
 | **MSIX** | secundário, documentado | `WindowsPackageType=MSIX` (hoje `None`), `Package.appxmanifest`, assinatura com certificado | Instalação/desinstalação limpa pelo Windows, `StartupTask`, caminho para a Store | Exige certificado de assinatura (ou Store); instalação de certificado autoassinado é atrito; identidade de pacote muda APIs (notificações, startup) |
 | MSI/Inno Setup | não planejado | — | — | Mais uma peça para manter; MSIX cobre o caso |
 
+## Instalador (caminho principal)
+
+`installer/SharpShot.iss` (Inno Setup 6) gera `SharpShot-Setup-<versão>.exe` a partir da pasta publicada. Comportamento: assistente em pt-BR; `PrivilegesRequired=lowest` com diálogo para instalar só para o usuário (`%LOCALAPPDATA%\Programs\SharpShot`, sem UAC) ou para todos (`Program Files\SharpShot`, admin); atalhos no Menu Iniciar (app e desinstalador) e opcional na área de trabalho; tarefa opcional "Iniciar o SharpShot junto com o Windows" (grava a mesma chave `HKCU\...\Run` que o app usa, removida na desinstalação); `CloseApplications=yes` fecha o app em atualização; o desinstalador encerra o processo (`taskkill`), remove arquivos, atalhos, entrada em *Aplicativos instalados* e pergunta se apaga `%LOCALAPPDATA%\SharpShot` (as capturas em `Imagens\SharpShot` nunca são apagadas). Compilação: `make-release.ps1` procura `ISCC.exe` (`winget install JRSoftware.InnoSetup`; no CI, chocolatey). Validado em 04/nov/2026 com instalação/desinstalação silenciosa (`/VERYSILENT`) e captura pelo app instalado. Limitação: executável não assinado (aviso do SmartScreen) até existir certificado de assinatura de código.
+
 ## Pasta publicada (unpackaged)
 
 Gerada por:

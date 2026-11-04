@@ -16,6 +16,7 @@ Tipos usados: Adicionado, Alterado, Corrigido, Removido, Depreciado, Segurança.
 
 ### Adicionado
 
+- **Instalador Windows** (`SharpShot-Setup-<versão>.exe`, Inno Setup, `installer/SharpShot.iss`) — assistente em pt-BR, instalação por usuário (sem UAC) ou para todos (Program Files), atalho no Menu Iniciar, atalho na área de trabalho opcional, opção "iniciar com o Windows", entrada em *Aplicativos instalados*, desinstalador que encerra o app, remove a chave `Run` e pergunta se apaga configurações/logs. Gerado por `make-release.ps1` e anexado à Release pelo `release.yml`. O zip continua como versão portátil. *Porquê:* o dono quer o fluxo de instalação de qualquer software; o instalador é o download principal.
 - **Aviso único de bandeja** — na primeira vez que a janela é fechada com *Minimizar para a bandeja* ligado, um toast explica que o SharpShot continua na bandeja (ícone laranja perto do relógio) e como abrir/capturar/sair; campo `trayHintShown` em `settings.json`. *Porquê:* no Windows 11 ícones novos ficam ocultos no menu "^" e o usuário não via o app.
 - README com botão de download direto da release e instruções para fixar o ícone na bandeja.
 

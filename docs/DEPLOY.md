@@ -50,7 +50,7 @@ Observações:
 
 ## Pacote de release (`tools/release/make-release.ps1` + `release.yml`)
 
-1. `pwsh tools/release/make-release.ps1` — faz o `dotnet publish` (Release, `win-x64`, self-contained), copia o runtime VC++ (`vcruntime140.dll`, `vcruntime140_1.dll`, `msvcp140*.dll`, `concrt140.dll`) da pasta `VC\Redist\MSVC\<ver>\x64\Microsoft.VC143.CRT` do Visual Studio (se não encontrar, avisa; o pacote então depende do *Microsoft Visual C++ Redistributable 2015-2022 x64* instalado), remove `.pdb` e gera `artifacts/release/SharpShot-<versão>-win-x64.zip` com `.sha256` ao lado. Validado em 04/nov/2026 (66,5 MB; exe publicado abre e captura).
+1. `pwsh tools/release/make-release.ps1` — faz o `dotnet publish` (Release, `win-x64`, self-contained), copia o runtime VC++ (`vcruntime140.dll`, `vcruntime140_1.dll`, `msvcp140*.dll`, `concrt140.dll`) da pasta `VC\Redist\MSVC\<ver>\x64\Microsoft.VC143.CRT` do Visual Studio (se não encontrar, avisa; o pacote então depende do *Microsoft Visual C++ Redistributable 2015-2022 x64* instalado), remove `.pdb`, gera `artifacts/release/SharpShot-<versão>-win-x64.zip` (portátil) e compila o instalador `SharpShot-Setup-<versão>.exe` (Inno Setup, `installer/SharpShot.iss`), cada um com `.sha256` ao lado. O instalador é o download principal. Validado em 04/nov/2026 (66,5 MB; exe publicado abre e captura).
 2. `git tag v0.1.0 && git push origin main --tags` — o workflow `release.yml` roda os testes unitários, executa o script e cria a **GitHub Release** com o zip e o hash anexados (`softprops/action-gh-release`). Alternativa manual: `gh release create v0.1.0 artifacts/release/SharpShot-0.1.0-win-x64.zip`.
 3. Estado em 04/nov/2026: pacote gerado localmente; tag e push **ainda não feitos** (decisão do dono do repositório).
 

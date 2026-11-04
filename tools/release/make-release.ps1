@@ -19,7 +19,8 @@ param(
     [string] $Version = "",
     [string] $Configuration = "Release",
     [string] $Runtime = "win-x64",
-    [switch] $SkipPublish
+    [switch] $SkipPublish,
+    [switch] $SkipInstaller
 )
 
 $ErrorActionPreference = "Stop"
@@ -81,3 +82,32 @@ $hash = (Get-FileHash $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
 $size = [math]::Round((Get-Item $zipPath).Length / 1MB, 1)
 Write-Host "==> Done: $zipPath ($size MB)"
 Write-Host "    SHA-256: $hash"
+
+# --- Installer (Inno Setup) — the primary download ------------------------------------------
+if (-not $SkipInstaller) {
+    $iscc = $null
+    foreach ($candidate in @(
+            "$env:LOCALAPPDATA\Programs\Inno Setup 6\ISCC.exe",
+            "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe",
+            "$env:ProgramFiles\Inno Setup 6\ISCC.exe")) {
+        if ($candidate -and (Test-Path $candidate)) { $iscc = $candidate; break }
+    }
+    if (-not $iscc) {
+        $cmd = Get-Command iscc -ErrorAction SilentlyContinue
+        if ($cmd) { $iscc = $cmd.Source }
+    }
+    if ($iscc) {
+        Write-Host "==> Compiling installer with $iscc"
+        & $iscc "/Qp" "/DMyAppVersion=$Version" "/DSourceDir=$publishDir" "/DOutputDir=$releaseDir" (Join-Path $root "installer\SharpShot.iss")
+        if ($LASTEXITCODE -ne 0) { throw "ISCC failed with exit code $LASTEXITCODE." }
+        $setupPath = Join-Path $releaseDir "SharpShot-Setup-$Version.exe"
+        $setupHash = (Get-FileHash $setupPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        "$setupHash  $(Split-Path $setupPath -Leaf)" | Set-Content -Encoding ascii "$setupPath.sha256"
+        $setupSize = [math]::Round((Get-Item $setupPath).Length / 1MB, 1)
+        Write-Host "==> Installer: $setupPath ($setupSize MB)"
+        Write-Host "    SHA-256: $setupHash"
+    }
+    else {
+        Write-Warning "Inno Setup (ISCC.exe) not found; installer skipped. Install it with: winget install JRSoftware.InnoSetup"
+    }
+}

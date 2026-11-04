@@ -13,6 +13,7 @@
 | Capturas | `<Imagens>\SharpShot\SharpShot_<timestamp>.png` (padrão) ou pasta escolhida | PNG RGB 8-bit | `ScreenshotStorageService` | implementado |
 | Logs | `%LOCALAPPDATA%\SharpShot\logs\sharpshot-AAAAMMDD.log` | texto | `FileLoggerProvider` do App (um arquivo por dia, 7 mantidos) | implementado |
 | Iniciar com o Windows | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` → valor `SharpShot` = `"<caminho>\SharpShot.exe" --minimized` | REG_SZ | `StartupService` do App | implementado e validado |
+| Entrada do instalador | `HKCU` (ou `HKLM`) `\Software\Microsoft\Windows\CurrentVersion\Uninstall\{B7A2D9F4-6C1E-4B8A-9F3D-5E2C7A1F0D42}_is1` | registro | Inno Setup (`installer/SharpShot.iss`); removida na desinstalação | implementado e validado |
 | Registro de notificações | feito pelo `AppNotificationManager` (AUMID + COM server, por usuário); desfeito em `Sair` | registro | `NotificationService` do App | implementado e validado |
 
 Regra de ouro: **nada fora do perfil do usuário** — sem `HKLM`, sem `Program Files`, sem `ProgramData`. Desinstalar é apagar o que está nesta tabela ([`distribution/instalacao.md`](distribution/instalacao.md)).

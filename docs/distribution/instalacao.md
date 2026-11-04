@@ -6,12 +6,12 @@
 
 ## Instalar
 
-1. Baixe `SharpShot-<versão>-win-x64.zip` da página de Releases do GitHub. Confira o SHA-256 (arquivo `.sha256` anexado).
-2. Extraia para uma pasta de sua escolha, por exemplo `C:\Users\<você>\Apps\SharpShot\` ou `D:\Ferramentas\SharpShot\`. Evite `C:\Program Files` (exige admin e o app não precisa disso).
-3. Execute `SharpShot.exe`. Na primeira execução de um arquivo baixado, o **SmartScreen** pode avisar "Editor desconhecido" (o MVP não é assinado): *Mais informações → Executar assim mesmo*. Alternativa: *Propriedades → Desbloquear* no zip antes de extrair.
-4. O app abre na janela principal; o ícone aparece na bandeja. Pronto: `Ctrl+Shift+1` captura a tela inteira; `Ctrl+Shift+2` seleciona região.
+1. Baixe `SharpShot-Setup-<versão>.exe` na página de Releases do GitHub (confira o `.sha256`).
+2. Execute o instalador. Se o SmartScreen avisar (executável ainda não assinado), clique em **Mais informações → Executar assim mesmo**.
+3. Escolha instalar só para você (padrão, sem senha de administrador) ou para todos os usuários; marque, se quiser, o atalho na área de trabalho e "Iniciar com o Windows".
+4. Ao concluir, o SharpShot abre e fica na bandeja. Atalhos: `Ctrl+Shift+1` tela inteira, `Ctrl+Shift+2` região.
 
-Nada é instalado fora da pasta até você ligar opções específicas (abaixo). A pasta pode ser movida depois; o único ponto que guarda o caminho é a chave `Run`, que o app reescreve ao iniciar.
+**Versão portátil (sem instalar):** baixe `SharpShot-<versão>-win-x64.zip`, descompacte em qualquer pasta e execute `SharpShot.exe`. Nada a instalar: .NET, Windows App SDK e runtime VC++ já vêm na pasta.
 
 ## O que o app cria no sistema
 

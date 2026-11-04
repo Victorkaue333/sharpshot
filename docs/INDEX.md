@@ -89,7 +89,7 @@ Camada fina e autoritativa (11 docs em `docs/` + 3 na raiz). Resumem e linkam o 
 
 ### Distribuição
 
-- [`distribution/README.md`](distribution/README.md) — unpackaged self-contained (principal) × MSIX (secundário), conteúdo da pasta, dependências de runtime (VC++ incluído no pacote), geração, checklist
+- [`distribution/README.md`](distribution/README.md) — instalador Inno Setup (principal), pasta unpackaged self-contained (portátil) × MSIX (secundário), conteúdo da pasta, dependências de runtime (VC++ incluído no pacote), geração, checklist
 - [`distribution/instalacao.md`](distribution/instalacao.md) — instalar, o que o app cria, iniciar com o Windows, atualizar, desinstalar sem resíduo, portátil, multiusuário
 - [`distribution/compatibilidade.md`](distribution/compatibilidade.md) — Windows 10 2004+/11, x64 (arm64 futuro), por que 19041, matriz de cenários
 

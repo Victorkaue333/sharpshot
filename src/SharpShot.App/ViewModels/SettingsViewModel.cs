@@ -247,7 +247,8 @@ public sealed class SettingsViewModel : ObservableObject
         _suppressSave = true;
         try
         {
-            StartWithWindows = settings.StartWithWindows && _startup.IsEnabled() || settings.StartWithWindows;
+            // The Run key is the truth (the installer can create it too); the JSON flag is a fallback.
+            StartWithWindows = _startup.IsEnabled() || settings.StartWithWindows;
             MinimizeToTray = settings.MinimizeToTray;
             ShowNotification = settings.ShowNotificationAfterCapture;
             ThemeIndex = (int)settings.Theme;
