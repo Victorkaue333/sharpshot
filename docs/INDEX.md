@@ -1,6 +1,6 @@
 # docs/ — Índice
 
-> Mapa da documentação do SharpShot. A fonte da verdade detalhada está em cada arquivo; em caso de divergência com o código, **o código prevalece** e o doc precisa ser corrigido. Legenda de status usada em todos os docs: **implementado** (verificado no código) · **em implementação** (`SharpShot.App`, sendo escrito) · **planejado** (testes) · **pendente de validação** (existe, não foi executado) · **roadmap**.
+> Mapa da documentação do SharpShot. A fonte da verdade detalhada está em cada arquivo; em caso de divergência com o código, **o código prevalece** e o doc precisa ser corrigido. Legenda de status usada em todos os docs: **implementado** (verificado no código) · **pendente de validação** (existe, não foi executado) · **roadmap**.
 > Última atualização: 04/nov/2026 *(primeira versão completa da documentação; `Core`, `Capture` e `Storage` implementados; `App` em implementação; nenhuma release)*
 
 ## Estrutura

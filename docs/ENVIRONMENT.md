@@ -75,9 +75,9 @@ flowchart LR
 
 | Argumento | Efeito | Status |
 |-----------|--------|--------|
-| `--minimized` | Inicia direto na bandeja, sem mostrar a janela (usado pela chave `Run`) | em implementação (App) |
+| `--minimized` | Inicia direto na bandeja, sem mostrar a janela (usado pela chave `Run`) | implementado; pendente de validação |
 
-Qualquer outro argumento é ignorado. Uma segunda instância passa a ativação para a primeira (`AppInstance.FindOrRegisterForKey`, em implementação).
+Qualquer outro argumento é ignorado. Uma segunda instância passa a ativação para a primeira (`AppInstance.FindOrRegisterForKey`; implementado, pendente de validação).
 
 ### Requisitos do sistema do usuário
 
