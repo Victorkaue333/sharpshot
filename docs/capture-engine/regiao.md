@@ -1,7 +1,7 @@
 # Seleção de região — Capture Engine
 
 > Como funciona o modo "Selecionar região" (`Ctrl+Shift+2`): o frame é congelado primeiro, o usuário desenha sobre a foto, e o recorte é feito em memória — nunca uma segunda captura.
-> Fontes: [`RegionMath.cs`](../../src/SharpShot.Core/Services/RegionMath.cs) · [`PixelBuffer.cs`](../../src/SharpShot.Core/Models/PixelBuffer.cs) · [`ResizeHandle.cs`](../../src/SharpShot.Core/Enums/ResizeHandle.cs) (verificados) · `RegionOverlayWindow` em `SharpShot.App` (**em implementação**) · [ADR-10](../DECISIONS.md#adr-10--seleção-de-região-sobre-frame-congelado-limitada-a-um-monitor).
+> Fontes: [`RegionMath.cs`](../../src/SharpShot.Core/Services/RegionMath.cs) · [`PixelBuffer.cs`](../../src/SharpShot.Core/Models/PixelBuffer.cs) · [`ResizeHandle.cs`](../../src/SharpShot.Core/Enums/ResizeHandle.cs) · [`RegionOverlayWindow.xaml.cs`](../../src/SharpShot.App/Views/RegionOverlayWindow.xaml.cs) · [`RegionSelectionSession.cs`](../../src/SharpShot.App/Services/RegionSelectionSession.cs) (verificados) · [ADR-10](../DECISIONS.md#adr-10--seleção-de-região-sobre-frame-congelado-limitada-a-um-monitor).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
 ## Por que congelar primeiro
@@ -73,7 +73,7 @@ sequenceDiagram
 - Região igual ao buffer inteiro → cópia exata (`Data.Clone()`), não a mesma referência.
 - Cópia linha a linha com `Buffer.BlockCopy`; sem reamostragem, sem conversão de formato.
 
-## Interface do overlay (em implementação — referência visual)
+## Interface do overlay (implementada — referência visual `public/assets/07-selecao-regiao-referencia.png`)
 
 Mockup de referência: [`public/assets/07-selecao-regiao-referencia.png`](../../public/assets/07-selecao-regiao-referencia.png) *(mockup, não é captura do app rodando)*.
 
@@ -96,7 +96,7 @@ A seleção começa e termina no monitor onde o arrasto começou. Arrastar para 
 - Um único `PixelBuffer` contínuo do desktop virtual exigiria compor os frames em memória, com lacunas (monitores não alinhados) preenchidas artificialmente.
 - O caso de uso "janela que atravessa dois monitores" é raro e tem como alternativa capturar os dois monitores separadamente.
 
-## Testes relacionados (planejados — `tests/SharpShot.Core.Tests`)
+## Testes relacionados (`tests/SharpShot.Core.Tests`)
 
 - `FromDrag` nas quatro direções de arrasto produz o mesmo retângulo.
 - `FromDrag` com ponto fora do monitor → retângulo limitado ao monitor.

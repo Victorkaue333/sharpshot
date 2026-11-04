@@ -9,9 +9,9 @@
 | Requisito | Valor | Origem |
 |-----------|-------|--------|
 | Sistema | **Windows 10 versão 2004 (build 19041)** ou superior · **Windows 11** (qualquer versão) | `TargetPlatformMinVersion=10.0.19041.0` nos `.csproj`; `supportedOS` Win10/11 no `app.manifest` |
-| Arquitetura | **x64** · **arm64** (nativo) | `RuntimeIdentifiers=win-x64;win-arm64`; plataformas x64/arm64 no `.slnx` |
+| Arquitetura | **x64** | `RuntimeIdentifiers=win-x64`; plataforma x64 no `.slnx`. arm64 fica para uma versão futura (nunca compilado no 0.1.0) |
 | x86 (32 bits) | **não suportado** | Não há RID `win-x86`; Windows 10/11 x86 é residual |
-| arm64 rodando o zip x64 | funciona por emulação, **não recomendado** | Use o zip `win-arm64` |
+| arm64 rodando o zip x64 | funciona por emulação x64 do Windows 11; pendente de validação | Sem zip arm64 no 0.1.0 |
 | Sessão | Área de trabalho interativa com DWM | WGC exige composição; `IsSupported` reporta |
 | Runtime .NET / Windows App SDK | **nenhum** a instalar | self-contained |
 | VC++ Redistributable | **verificar na pasta publicada** ([`README.md`](README.md#dependências-de-runtime)) | — |
@@ -39,7 +39,7 @@ Em builds anteriores a 19041 o Windows recusa iniciar o executável ou o Windows
 | Windows 10 22H2 (19045), x64 | Funciona; `IsBorderRequired=false` **pode ser negado** em app unpackaged → borda amarela breve durante a captura (não aparece no PNG) | pendente de validação |
 | Windows 10 2004–21H2 | Deve funcionar (mesmas APIs); sem teste previsto — versões fora de suporte da Microsoft | não testado |
 | Windows 10 < 2004 (1909, 1903…) | **Não suportado** — não inicia | por desenho |
-| Windows 11 arm64 (Snapdragon) | Funciona nativo com o zip `win-arm64`; captura via WARP se o driver não expuser D3D11 (improvável) | pendente de validação |
+| Windows 11 arm64 (Snapdragon) | Só por emulação do zip x64 | pendente de validação |
 | VM (Hyper-V, VMware, VirtualBox) com sessão de console | Funciona; D3D11 pode cair para **WARP** (mais lento, funcional) | pendente de validação |
 | RDP com desktop composto (Windows 10/11 modernos) | Funciona; captura é o que o DWM compõe na sessão remota | pendente de validação |
 | RDP sem DWM / sessão de serviço / Session 0 | `IsSupported` falso → mensagem "Captura não disponível" | por desenho |

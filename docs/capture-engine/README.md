@@ -110,8 +110,8 @@ Mensagens em pt-BR para o usuário e política de retry: [`../architecture/erros
 
 ## O que ainda não está no código
 
-- A UI que chama o motor (hotkey → captura → encoder → storage → toast) está **em implementação** em `SharpShot.App`.
-- Testes de `tests/SharpShot.Capture.Tests` (round-trip PNG, enumeração de monitores, captura de integração pulada quando WGC não é suportado): **planejados; a pasta contém só o `.csproj`** nesta data.
+- A UI que chama o motor (hotkey → captura → encoder → storage → toast) está implementada em `SharpShot.App` (`CaptureCoordinator`) e validada na máquina do autor.
+- Testes de `tests/SharpShot.Capture.Tests` (round-trip PNG byte a byte, enumeração de monitores, captura de integração pulada quando WGC não é suportado): **35 testes, todos verdes**.
 
 ---
 

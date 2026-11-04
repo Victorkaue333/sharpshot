@@ -84,7 +84,7 @@ Durante o desenvolvimento, o app usa o **mesmo** `%LOCALAPPDATA%\SharpShot\setti
 dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=x64 -r win-x64 --self-contained -o artifacts/publish/win-x64
 ```
 
-Detalhes (arm64, conteúdo da pasta, checklist): [`../distribution/README.md`](../distribution/README.md).
+Detalhes (conteúdo da pasta, runtime VC++, checklist): [`../distribution/README.md`](../distribution/README.md).
 
 ## Regenerar o branding
 

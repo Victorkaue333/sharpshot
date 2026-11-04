@@ -6,7 +6,7 @@
 
 ## Instalar
 
-1. Baixe `SharpShot-<versão>-win-x64.zip` (ou `-win-arm64.zip` em máquinas ARM) da página de Releases do GitHub. Confira o SHA-256 informado nas notas.
+1. Baixe `SharpShot-<versão>-win-x64.zip` da página de Releases do GitHub. Confira o SHA-256 (arquivo `.sha256` anexado).
 2. Extraia para uma pasta de sua escolha, por exemplo `C:\Users\<você>\Apps\SharpShot\` ou `D:\Ferramentas\SharpShot\`. Evite `C:\Program Files` (exige admin e o app não precisa disso).
 3. Execute `SharpShot.exe`. Na primeira execução de um arquivo baixado, o **SmartScreen** pode avisar "Editor desconhecido" (o MVP não é assinado): *Mais informações → Executar assim mesmo*. Alternativa: *Propriedades → Desbloquear* no zip antes de extrair.
 4. O app abre na janela principal; o ícone aparece na bandeja. Pronto: `Ctrl+Shift+1` captura a tela inteira; `Ctrl+Shift+2` seleciona região.
