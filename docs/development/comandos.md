@@ -13,7 +13,6 @@
 | Testar Capture | `dotnet test tests/SharpShot.Capture.Tests -c Debug -p:Platform=x64` |
 | Executar | `src\SharpShot.App\bin\x64\Debug\net10.0-windows10.0.26100.0\win-x64\SharpShot.exe` |
 | Publicar x64 | `dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=x64 -r win-x64 --self-contained -o artifacts/publish/win-x64` |
-| Publicar arm64 | `dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=arm64 -r win-arm64 --self-contained -o artifacts/publish/win-arm64` |
 | Branding | `python tools/branding/generate_branding.py` |
 | Formatar | `dotnet format SharpShot.slnx` |
 
@@ -32,7 +31,6 @@ dotnet restore SharpShot.slnx
 ```bash
 dotnet build SharpShot.slnx -c Debug -p:Platform=x64
 dotnet build SharpShot.slnx -c Release -p:Platform=x64
-dotnet build SharpShot.slnx -c Debug -p:Platform=arm64
 ```
 
 - `-p:Platform` é **obrigatório** para o `.slnx` (WinUI não compila AnyCPU). Para um projeto isolado (`dotnet build src/SharpShot.Core`), `Directory.Build.props` assume x64.
@@ -72,11 +70,10 @@ dotnet run --project src/SharpShot.App -c Debug -p:Platform=x64
 
 ```bash
 dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=x64   -r win-x64   --self-contained -o artifacts/publish/win-x64
-dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=arm64 -r win-arm64 --self-contained -o artifacts/publish/win-arm64
 ```
 
 - `--self-contained` já é o padrão do `.csproj` (`SelfContained=true`), repetido para deixar explícito.
-- `-p:Platform` e `-r` precisam combinar (x64 ↔ `win-x64`, arm64 ↔ `win-arm64`).
+- `-p:Platform=x64` e `-r win-x64` precisam combinar (única plataforma suportada no 0.1.0).
 - `-o` pode ser qualquer pasta; `artifacts/` está no `.gitignore`.
 - Não usar `-p:PublishTrimmed=true` nem `-p:PublishReadyToRun=true` sem ADR — o `.csproj` os desliga de propósito (ADR-01).
 - Resultado e checklist: [`../distribution/README.md`](../distribution/README.md).

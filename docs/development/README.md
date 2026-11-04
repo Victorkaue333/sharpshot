@@ -40,7 +40,7 @@ Se `dotnet --version` reclamar que o SDK do `global.json` não foi encontrado, o
 1. Visual Studio Installer → **Modificar** → workload **Desenvolvimento para desktop com .NET**.
 2. Aba *Componentes individuais* → marcar **Modelos C# do SDK do Aplicativo Windows** (Windows App SDK C# Templates). O SDK do Windows 10.0.26100 *pode* ser marcado, mas não é necessário (NuGet traz o targeting pack).
 3. Abrir `SharpShot.slnx` (o VS 17.10+ abre `.slnx` nativamente; em versões anteriores, habilitar *Preview Features → Use Solution File Persistence Model*).
-4. **Plataforma da solução: x64** (ou arm64 em máquina ARM). *Any CPU* não compila projetos WinUI — `Directory.Build.props` força x64 em builds de linha de comando, mas o VS respeita o que está selecionado na barra.
+4. **Plataforma da solução: x64** (única suportada no 0.1.0). *Any CPU* não compila projetos WinUI — `Directory.Build.props` força x64 em builds de linha de comando, mas o VS respeita o que está selecionado na barra.
 5. Projeto de inicialização: `SharpShot.App`. F5 inicia `SharpShot.exe` com o depurador (unpackaged, sem deploy de pacote).
 6. *Ferramentas → Opções → Depuração → Geral*: desmarcar **Apenas Meu Código** quando for depurar interop/WinRT.
 

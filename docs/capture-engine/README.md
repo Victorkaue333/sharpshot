@@ -89,7 +89,7 @@ Mesmo pipeline, com uma etapa a mais entre o frame e o encoder: o frame congelad
 
 Duas defesas, nessa ordem:
 
-1. **`SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE)`** nas janelas do SharpShot (principal e overlays) — o DWM as omite da composição que o WGC vê. *(App: em implementação.)*
+1. **`SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE)`** nas janelas do SharpShot (principal e overlays) — o DWM as omite da composição que o WGC vê. *(App: `WindowHost` e `RegionOverlayWindow`; `SHARPSHOT_ALLOW_SELF_CAPTURE=1` desliga só para desenvolvimento.)*
 2. **Esconder a janela principal + `CompositionSync.WaitForComposition()`** antes de iniciar a sessão — cobre o caso em que a afinidade não é honrada. A dupla defesa custa dois frames de composição e evita uma classe inteira de "tirei print do próprio SharpShot".
 
 `DwmFlush` retorna erro quando o DWM não está rodando (sessão legada); nesse caso o `CompositionSync` cai para um `Thread.Sleep(16)` por frame.

@@ -57,7 +57,7 @@ Consequências:
 
 | Modo | Monitor | Como |
 |------|---------|------|
-| Tela inteira | O que está **sob o cursor** | `IMonitorService.GetMonitorUnderCursor()` *(decisão do App, em implementação — ver questão aberta abaixo)* |
+| Tela inteira | O **monitor principal** (`IMonitorService.GetPrimaryMonitor()`), conforme o requisito do MVP; `GetMonitorUnderCursor()` existe para uma opção futura |
 | Região | O que o usuário escolheu arrastando | Um `RegionOverlayWindow` por monitor; a seleção **não atravessa** monitores (ADR-10) |
 
 A escolha "monitor sob o cursor" é a que `IMonitorService` já suporta diretamente e a que corresponde ao comportamento de `PrintScreen` por monitor em outras ferramentas. **Pendente de validação** no App: o lead pode decidir por "monitor da janela ativa" em vez do cursor.
@@ -77,7 +77,7 @@ double PixelToDip(int pixel, double scale)   // pixel / scale
 
 Cenário: DISPLAY1 em 150 % (2880×1620 físico), DISPLAY2 em 100 % (1920×1080).
 
-1. O overlay de cada monitor é posicionado pelos `Bounds` físicos (`SetWindowPos` com `HWND` do WinUI — em implementação) e usa a `RasterizationScale` do seu próprio monitor para desenhar.
+1. O overlay de cada monitor é posicionado pelos `Bounds` físicos (`AppWindow.MoveAndResize` com o retângulo físico do monitor — implementado em `RegionOverlayWindow.ShowOverlay`) e usa a `RasterizationScale` do seu próprio monitor para desenhar.
 2. O cursor do usuário, em pixels físicos, é convertido para DIP **da janela em que está**; o retângulo desenhado em DIP é convertido de volta para físico com a mesma escala. Nenhum valor "vaza" de um monitor para outro.
 3. O `PixelBuffer` capturado de DISPLAY1 tem 2880×1620 pixels — o PNG sai nesse tamanho, sem reamostragem. O badge "1280 × 720" do overlay mostra o tamanho **físico** da seleção, não em DIP.
 
@@ -91,7 +91,7 @@ Cenário: DISPLAY1 em 150 % (2880×1620 físico), DISPLAY2 em 100 % (1920×1080)
 | Monitor em orientação retrato | `rcMonitor` já vem rotacionado; nada a fazer |
 | Monitor duplicado (modo "Duplicar") | Windows expõe um único `HMONITOR`; captura normal |
 
-## Testes relacionados (planejados — `tests/`)
+## Testes relacionados (`tests/`)
 
 - `RegionMath`: `DipToPixel` em 100/125/150/200 %, arredondamento em 0,5; `FromDrag` com pontos fora do monitor (clamp); `Move`/`Resize` nos limites.
 - `PixelRectangle.FromPoints` com coordenadas negativas; `Intersect` vazio; `RelativeTo`.

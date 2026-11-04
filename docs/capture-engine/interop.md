@@ -84,7 +84,7 @@ Isso substitui o caminho "clássico" (staging texture + `Map` + loop de linhas c
 
 ## Afinidade de exibição, hotkeys e bandeja (lado do App)
 
-As chamadas abaixo pertencem ao **App**, não ao motor, e estão **em implementação**:
+As chamadas abaixo pertencem ao **App**, não ao motor (`src/SharpShot.App/Interop/User32.cs` e `Shell32.cs`):
 
 | Função | Para quê |
 |--------|----------|
