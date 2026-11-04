@@ -1,0 +1,24 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+    <Platform Name="arm64" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/SharpShot.App/SharpShot.App.csproj" />
+    <Project Path="src/SharpShot.Capture/SharpShot.Capture.csproj" />
+    <Project Path="src/SharpShot.Core/SharpShot.Core.csproj" />
+    <Project Path="src/SharpShot.Storage/SharpShot.Storage.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SharpShot.Capture.Tests/SharpShot.Capture.Tests.csproj" />
+    <Project Path="tests/SharpShot.Core.Tests/SharpShot.Core.Tests.csproj" />
+  </Folder>
+  <Folder Name="/solution-items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+  </Folder>
+</Solution>

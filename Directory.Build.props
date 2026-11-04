@@ -1,0 +1,29 @@
+<Project>
+
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <Product>SharpShot</Product>
+    <Company>SharpShot</Company>
+    <Authors>Victor Alves</Authors>
+    <Copyright>Copyright © 2026 Victor Alves</Copyright>
+    <Description>A lightweight, native Windows screenshot tool built with C#, .NET and WinUI 3.</Description>
+    <RepositoryUrl>https://github.com/Victorkaue333/sharpshot</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <SatelliteResourceLanguages>en;pt-BR</SatelliteResourceLanguages>
+    <Deterministic>true</Deterministic>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- WinUI projects cannot be built for AnyCPU; default direct builds to x64. -->
+    <Platform Condition="'$(Platform)' == 'AnyCPU' or '$(Platform)' == ''">x64</Platform>
+  </PropertyGroup>
+
+</Project>
