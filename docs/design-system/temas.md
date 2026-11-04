@@ -51,7 +51,7 @@ Detalhe de cada variante em [`branding.md`](branding.md) e [`assets.md`](assets.
 |------|-------|--------|
 | Menu da bandeja (Win32 `TrackPopupMenuEx`) | tema **do sistema** | Menu nativo; não há API para forçar claro/escuro em menu Win32 sem custom-draw ([ADR-06](../DECISIONS.md)) |
 | Toast (`AppNotificationManager`) | tema **do sistema** | Renderizado pelo Windows ([ADR-07](../DECISIONS.md)) |
-| Botões da barra de título (min/max/fechar) | tema da janela | WinUI 3 com `ExtendsContentIntoTitleBar` pinta os caption buttons conforme `RequestedTheme` — precisa setar `TitleBar.ButtonForegroundColor` etc. no `AppWindow` (**em implementação**) |
+| Botões da barra de título (min/max/fechar) | tema da janela | WinUI 3 com `ExtendsContentIntoTitleBar` pinta os caption buttons conforme `RequestedTheme` — `ThemeService.ApplyTitleBar` seta `TitleBar.ButtonForegroundColor`/`ButtonHoverBackgroundColor` etc. no `AppWindow` a cada mudança de tema (implementado) |
 | Diálogo de pasta (`FolderPicker`) | sistema | Diálogo do shell |
 
 Aceito e documentado; não é bug.
@@ -63,7 +63,7 @@ Aceito e documentado; não é bug.
 3. Alto contraste (tema "Aquatic"/"Desert"): tudo legível, laranja substituído pelo realce do sistema.
 4. Contraste AA conferido nos dois temas para: texto da Home, caption do atalho, `InfoBar` de erro, badge do overlay.
 
-Status: **pendente de validação** (App em implementação).
+Status: tema escuro validado na máquina do autor (capturas de tela da UI em 04/nov/2026); tema claro e alto contraste **pendentes de validação visual**.
 
 ---
 

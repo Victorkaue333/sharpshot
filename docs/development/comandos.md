@@ -63,8 +63,8 @@ src\SharpShot.App\bin\x64\Debug\net10.0-windows10.0.26100.0\win-x64\SharpShot.ex
 dotnet run --project src/SharpShot.App -c Debug -p:Platform=x64
 ```
 
-- Segunda execução com a primeira aberta: ativa a existente e sai (instância única — em implementação).
-- Logs em `%LOCALAPPDATA%\SharpShot\logs` (em implementação) e no Output do VS.
+- Segunda execução com a primeira aberta: ativa a existente e sai (instância única via `AppInstance.FindOrRegisterForKey`; pendente de validação).
+- Logs em `%LOCALAPPDATA%\SharpShot\logs\sharpshot-AAAAMMDD.log` e no Output do VS.
 
 ## Publish
 

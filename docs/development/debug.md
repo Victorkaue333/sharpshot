@@ -31,7 +31,7 @@ Get-Content "$env:LOCALAPPDATA\SharpShot\logs\*.log" -Wait -Tail 50
 
 | O quê | Onde |
 |-------|------|
-| Logs do app | `%LOCALAPPDATA%\SharpShot\logs\` (provider de arquivo — em implementação) e janela **Output → Debug** do VS (`DebugLoggerProvider`) |
+| Logs do app | `%LOCALAPPDATA%\SharpShot\logs\` (`FileLoggerProvider`, um arquivo por dia, 7 mantidos) e janela **Output → Debug** do VS (`DebugLoggerProvider`) |
 | Configurações em efeito | `%LOCALAPPDATA%\SharpShot\settings.json` (+ `.corrupt-*` se houve backup) |
 | Capturas | pasta configurada / `Imagens\SharpShot` |
 | Chave de inicialização | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run\SharpShot` (`regedit` ou `Get-ItemProperty`) |
