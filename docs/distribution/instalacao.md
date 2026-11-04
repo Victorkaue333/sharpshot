@@ -1,7 +1,7 @@
 # Instalação e desinstalação — SharpShot
 
 > O SharpShot não tem instalador: instala-se copiando uma pasta e desinstala-se apagando o que ele criou. Este arquivo lista **exatamente** o que o app toca no sistema, para a desinstalação não deixar resíduo. Tudo é por usuário (`HKCU`, `%LOCALAPPDATA%`, pasta Imagens); nada exige administrador.
-> Fontes: [`../DATABASE.md`](../DATABASE.md) · [ADR-01](../DECISIONS.md), [ADR-07](../DECISIONS.md), [ADR-08](../DECISIONS.md) · App (em implementação) para `Run` e notificações.
+> Fontes: [`../DATABASE.md`](../DATABASE.md) · [ADR-01](../DECISIONS.md), [ADR-07](../DECISIONS.md), [ADR-08](../DECISIONS.md) · `StartupService.cs` e `NotificationService.cs` do App para `Run` e notificações.
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves · **Pendente de validação**: nenhum release existe; os passos descrevem o comportamento projetado e verificado no `.csproj`/`Storage`.
 
 ## Instalar
@@ -18,7 +18,7 @@ Nada é instalado fora da pasta até você ligar opções específicas (abaixo).
 | Item | Caminho | Quando é criado | Dono |
 |------|---------|-----------------|------|
 | Configurações | `%LOCALAPPDATA%\SharpShot\settings.json` (+ `settings.json.tmp` transitório, `settings.json.corrupt-*` se houver backup) | Primeira gravação de configuração | `SettingsService` (implementado) |
-| Logs | `%LOCALAPPDATA%\SharpShot\logs\*.log` | Primeira execução | App (em implementação) |
+| Logs | `%LOCALAPPDATA%\SharpShot\logs\*.log` | Primeira execução | App (`FileLoggerProvider`) |
 | Capturas | `<Imagens>\SharpShot\SharpShot_*.png` (padrão) ou a pasta configurada | Primeira captura | `ScreenshotStorageService` (implementado) |
 | Iniciar com o Windows | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` → valor `SharpShot` = `"<pasta>\SharpShot.exe" --minimized` | Só se a opção for ligada | App (em implementação) |
 | Registro de notificações | Registro por usuário do `AppNotificationManager` (AUMID `SharpShot` + servidor COM de ativação apontando para o `.exe`), em `HKCU\Software\Classes\…` | Primeira execução (`Register()`), se suportado | App (em implementação) |

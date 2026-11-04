@@ -45,7 +45,7 @@ Em builds anteriores a 19041 o Windows recusa iniciar o executável ou o Windows
 | RDP sem DWM / sessão de serviço / Session 0 | `IsSupported` falso → mensagem "Captura não disponível" | por desenho |
 | Monitor HDR ligado | Captura mapeada para SDR; PNG 8-bit ([`../capture-engine/hdr.md`](../capture-engine/hdr.md)) | por desenho |
 | Monitor em modo retrato | `rcMonitor` já rotacionado; funciona | pendente de validação |
-| Monitor desconectado durante a seleção | Overlay daquele monitor fica órfão → fechar todos e cancelar (**tratamento no App pendente**) | em implementação |
+| Monitor desconectado durante a seleção | Overlay daquele monitor fica órfão; não há tratamento específico (limitação conhecida) | pendente de validação |
 | Conteúdo protegido (DRM, apps bancários, `WDA_EXCLUDEFROMCAPTURE`) | Área preta no PNG — regra do Windows | por desenho |
 | Tela de bloqueio / UAC (desktop seguro) | Hotkey não chega; nada acontece | por desenho |
 | Múltiplas GPUs (laptop híbrido) | `D3D11CreateDevice(adapter = null)` usa o adaptador padrão; WGC funciona independentemente de qual GPU renderiza o app | pendente de validação |
