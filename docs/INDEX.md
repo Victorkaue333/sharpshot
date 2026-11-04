@@ -1,7 +1,7 @@
 # docs/ — Índice
 
 > Mapa da documentação do SharpShot. A fonte da verdade detalhada está em cada arquivo; em caso de divergência com o código, **o código prevalece** e o doc precisa ser corrigido. Legenda de status usada em todos os docs: **implementado** (verificado no código) · **pendente de validação** (existe, não foi executado) · **roadmap**.
-> Última atualização: 04/nov/2026 *(primeira versão completa da documentação; `Core`, `Capture` e `Storage` implementados; `App` em implementação; nenhuma release)*
+> Última atualização: 04/nov/2026 *(documentação sincronizada com a implementação completa; 320 testes verdes; pacote 0.1.0 gerado localmente, release no GitHub ainda não publicada)*
 
 ## Estrutura
 
@@ -119,6 +119,6 @@ Camada fina e autoritativa (11 docs em `docs/` + 3 na raiz). Resumem e linkam o 
 ## Lacunas da documentação (honestas)
 
 - Nenhum número de desempenho, tamanho de pasta publicada ou resultado de teste: **não existem medições ainda**.
-- O `App` é descrito pela convenção que ele deve seguir; quando o código existir, cada doc marcado "em implementação" precisa ser conferido contra ele.
+- Em caso de divergência entre um doc e o código do `App`, o código prevalece e o doc deve ser corrigido.
 - `design-system/branding.md` e `assets.md` pertencem ao agente de branding — conferir existência.
-- Capturas reais do app substituirão os mockups quando houver release.
+- Capturas reais da UI (tema escuro) foram usadas na validação de 04/nov/2026; os mockups em `public/assets/` seguem como referência de design.
