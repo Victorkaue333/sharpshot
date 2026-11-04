@@ -1,0 +1,5 @@
+# Test-specific analyzer settings (merged with the repository root .editorconfig).
+
+[*.cs]
+# Test method names use Method_Scenario_Expectation with underscores.
+dotnet_diagnostic.CA1707.severity = none
