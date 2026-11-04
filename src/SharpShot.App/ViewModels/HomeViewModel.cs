@@ -11,8 +11,11 @@ public sealed class HomeViewModel : ObservableObject, IDisposable
     private readonly ISettingsService _settings;
     private readonly IScreenshotStorage _storage;
     private readonly ShellService _shell;
+    private readonly IHotkeyService _hotkeys;
     private readonly DispatcherQueue _dispatcher;
 
+    private string _hotkeyWarning = string.Empty;
+    private bool _isHotkeyWarningOpen;
     private string _statusText = "Pronto para capturar";
     private CaptureStatusKind _statusKind = CaptureStatusKind.Ready;
     private string? _lastFilePath;
@@ -27,12 +30,14 @@ public sealed class HomeViewModel : ObservableObject, IDisposable
         ISettingsService settings,
         IScreenshotStorage storage,
         ShellService shell,
+        IHotkeyService hotkeys,
         DispatcherQueue dispatcher)
     {
         _coordinator = coordinator;
         _settings = settings;
         _storage = storage;
         _shell = shell;
+        _hotkeys = hotkeys;
         _dispatcher = dispatcher;
 
         CaptureFullScreenCommand = new RelayCommand(_coordinator.CaptureFullScreenAsync);
@@ -128,6 +133,38 @@ public sealed class HomeViewModel : ObservableObject, IDisposable
 
     public string FormatText => "PNG (sem perda de qualidade)";
 
+    /// <summary>Shown when a configured hotkey could not be registered (taken by another application).</summary>
+    public string HotkeyWarning
+    {
+        get => _hotkeyWarning;
+        private set => SetProperty(ref _hotkeyWarning, value);
+    }
+
+    public bool IsHotkeyWarningOpen
+    {
+        get => _isHotkeyWarningOpen;
+        set => SetProperty(ref _isHotkeyWarningOpen, value);
+    }
+
+    private void RefreshHotkeyWarning(AppSettings settings)
+    {
+        var missing = new List<string>(2);
+        if (_hotkeys.GetCurrent(Core.Enums.CaptureMode.FullScreen) is null)
+        {
+            missing.Add($"{settings.FullScreenHotkey.ToDisplayString()} (tela inteira)");
+        }
+
+        if (_hotkeys.GetCurrent(Core.Enums.CaptureMode.Region) is null)
+        {
+            missing.Add($"{settings.RegionHotkey.ToDisplayString()} (região)");
+        }
+
+        HotkeyWarning = missing.Count == 0
+            ? string.Empty
+            : $"Atalho em uso por outro aplicativo: {string.Join("; ", missing)}. Altere em Configurações › Atalhos.";
+        IsHotkeyWarningOpen = missing.Count > 0;
+    }
+
     public void Dispose()
     {
         _settings.Changed -= OnSettingsChanged;
@@ -154,6 +191,7 @@ public sealed class HomeViewModel : ObservableObject, IDisposable
         FullScreenHotkey = settings.FullScreenHotkey;
         RegionHotkey = settings.RegionHotkey;
         SaveDirectory = _storage.ResolveDirectory(settings.SaveDirectory);
+        RefreshHotkeyWarning(settings);
     }
 
     private void ApplyStatus(CaptureStatus status)

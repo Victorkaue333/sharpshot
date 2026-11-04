@@ -75,8 +75,10 @@ public sealed partial class RegionOverlayWindow : Window
             Render();
             Surface.Focus(FocusState.Programmatic);
         };
-        Activated += (_, _) => Surface.Focus(FocusState.Programmatic);
+        Activated += OnActivated;
     }
+
+    private bool _closed;
 
     public CapturedFrame Frame { get; }
 
@@ -105,6 +107,19 @@ public sealed partial class RegionOverlayWindow : Window
 
     public void CloseOverlay()
     {
+        if (_closed)
+        {
+            return;
+        }
+
+        _closed = true;
+        Activated -= OnActivated;
+        Surface.PointerPressed -= OnPointerPressed;
+        Surface.PointerMoved -= OnPointerMoved;
+        Surface.PointerReleased -= OnPointerReleased;
+        Surface.PointerCanceled -= OnPointerCanceled;
+        Surface.PointerCaptureLost -= OnPointerCanceled;
+        Surface.KeyDown -= OnKeyDown;
         try
         {
             Close();
@@ -112,6 +127,14 @@ public sealed partial class RegionOverlayWindow : Window
         catch (Exception)
         {
             // Already closed.
+        }
+    }
+
+    private void OnActivated(object sender, WindowActivatedEventArgs e)
+    {
+        if (!_closed)
+        {
+            Surface.Focus(FocusState.Programmatic);
         }
     }
 
@@ -258,6 +281,11 @@ public sealed partial class RegionOverlayWindow : Window
 
     private void Render()
     {
+        if (_closed)
+        {
+            return;
+        }
+
         var width = Surface.ActualWidth;
         var height = Surface.ActualHeight;
         if (width <= 0 || height <= 0)

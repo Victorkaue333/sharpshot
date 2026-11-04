@@ -125,6 +125,11 @@
 
             <!-- Status -->
             <StackPanel Grid.Row="5" Spacing="10">
+                <InfoBar IsOpen="{x:Bind ViewModel.IsHotkeyWarningOpen, Mode=TwoWay}"
+                         Severity="Warning"
+                         Title="Atalho não registrado"
+                         Message="{x:Bind ViewModel.HotkeyWarning, Mode=OneWay}" />
+
                 <InfoBar IsOpen="{x:Bind ViewModel.IsErrorOpen, Mode=TwoWay}"
                          Severity="Error"
                          Title="Falha na captura"

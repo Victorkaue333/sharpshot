@@ -48,10 +48,10 @@ jobs:
         run: dotnet build SharpShot.slnx -c Release -p:Platform=x64 --no-restore
 
       - name: Test (Core)
-        run: dotnet test tests/SharpShot.Core.Tests -c Release -p:Platform=x64 --no-build --logger trx
+        run: dotnet test tests/SharpShot.Core.Tests -c Release -p:Platform=x64 --logger trx
 
       - name: Test (Capture, without integration)
-        run: dotnet test tests/SharpShot.Capture.Tests -c Release -p:Platform=x64 --no-build --logger trx --filter "Category!=Integration"
+        run: dotnet test tests/SharpShot.Capture.Tests -c Release -p:Platform=x64 --logger trx --filter "Category!=Integration"
 
       - name: Upload test results
         if: always()

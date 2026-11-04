@@ -3,7 +3,6 @@
     <BuildType Name="Debug" />
     <BuildType Name="Release" />
     <Platform Name="x64" />
-    <Platform Name="arm64" />
   </Configurations>
   <Folder Name="/src/">
     <Project Path="src/SharpShot.App/SharpShot.App.csproj" />
