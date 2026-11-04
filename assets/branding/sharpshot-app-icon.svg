@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFAA35"/>
+      <stop offset="1" stop-color="#FF7A00"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F5F7FA"/>
+      <stop offset="1" stop-color="#C9D1DC"/>
+    </linearGradient>
+    <linearGradient id="silverEdge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9AA5B4"/>
+      <stop offset="1" stop-color="#6E7A8A"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2230"/>
+      <stop offset="1" stop-color="#0D1017"/>
+    </linearGradient>
+    <linearGradient id="tileHighlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A5870"/>
+      <stop offset="0.35" stop-color="#2A3447"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="254" height="254" rx="56.3" fill="url(#tile)" stroke="url(#tileHighlight)" stroke-width="2"/>
+  <g transform="translate(29.39 29.39) scale(0.7704)">
+    <path id="TopBracket" d="M 31.9,60.7 L 32.4,58.7 L 33.9,55.2 L 36.4,50.9 L 39.7,46.1 L 43.7,41.2 L 48.2,36.4 L 53.1,31.8 L 58.0,27.8 L 62.8,24.5 L 67.1,22.0 L 70.6,20.5 L 72.6,20.0 L 168.0,20.0 L 161.2,51.9 L 79.7,51.9 L 76.5,52.3 L 73.5,53.5 L 70.9,55.5 L 69.0,58.1 L 67.7,61.1 L 67.3,64.3 L 67.3,121.5 L 31.9,152.3 Z" fill="url(#orange)"/>
+    <path id="LowerSilver" d="M 69.1,129.4 L 158.8,153.4 L 128.2,180.0 L 38.4,156.0 Z" fill="url(#silver)"/>
+    <path id="LowerSilverEdge" d="M 38.4,156.0 L 128.2,180.0 L 131.1,177.5 L 41.3,153.5 Z" fill="url(#silverEdge)"/>
+    <path id="UpperSilver" d="M 186.9,126.6 L 97.2,102.6 L 127.8,76.0 L 217.6,100.0 Z" fill="url(#silver)"/>
+    <path id="UpperSilverEdge" d="M 97.2,102.6 L 186.9,126.6 L 189.8,124.1 L 100.1,100.1 Z" fill="url(#silverEdge)"/>
+    <path id="BottomBracket" d="M 224.1,195.3 L 223.6,197.3 L 222.1,200.8 L 219.6,205.1 L 216.3,209.9 L 212.3,214.8 L 207.8,219.6 L 202.9,224.2 L 198.0,228.2 L 193.2,231.5 L 188.9,234.0 L 185.4,235.5 L 183.4,236.0 L 88.0,236.0 L 94.8,204.1 L 176.3,204.1 L 179.5,203.7 L 182.5,202.5 L 185.1,200.5 L 187.0,197.9 L 188.3,194.9 L 188.7,191.7 L 188.7,134.5 L 224.1,103.7 Z" fill="url(#orange)"/>
+  </g>
+</svg>
