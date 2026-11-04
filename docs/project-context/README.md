@@ -93,7 +93,7 @@ Backend · API REST · banco de dados · autenticação/conta · telemetria · s
 | `SharpShot.Capture` (WGC, D3D, monitores, DwmFlush, PNG) | implementado |
 | `SharpShot.Storage` (settings.json, gravação) | implementado |
 | `SharpShot.App` (UI, hotkeys, bandeja, toasts, overlay, DI) | **implementado** (esqueleto: `Program.Main`, `App.xaml`, `MainWindow` placeholder, manifesto, `.csproj` unpackaged) |
-| Testes (`tests/`) | **planejados** — só `.csproj` |
+| Testes (`tests/`) | **implementados** — 285 (Core/Storage) + 35 (Capture), todos verdes |
 | CI (`.github/workflows/build.yml`) | a ser escrito pelo lead |
 | Branding (`tools/branding/`, `assets/`) | implementado (artefatos gerados) |
 | Documentação | esta versão |

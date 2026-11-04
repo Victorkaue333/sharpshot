@@ -1,6 +1,6 @@
 # Critérios de aceitação — SharpShot 0.1.0
 
-> O que precisa **passar** para o MVP existir. Cada critério é verificável (automatizado ou manual com passos), rastreia a um RF/RNF e tem um status. **Em 04/nov/2026 nenhum critério foi validado**: o App está sendo escrito e os testes estão planejados. Marcar `[x]` só com evidência (saída do teste, data e máquina do teste manual).
+> O que precisa **passar** para o MVP existir. Cada critério é verificável (automatizado ou manual com passos), rastreia a um RF/RNF e tem um status. **Validação de 04/nov/2026** registrada na seção final deste arquivo (máquina do autor, Windows 11 26200, 1920×1080 @ 100 % + monitor retrato 1080×1920). Marcar `[x]` só com evidência (saída do teste, data e máquina do teste manual).
 > Fontes: [`requisitos.md`](requisitos.md) · [`../PRD.md`](../PRD.md).
 > Última atualização: 04/nov/2026 · Mantenedor: Victor Alves
 
@@ -62,3 +62,31 @@
 ---
 
 Requisitos: [`requisitos.md`](requisitos.md) · Contexto: [`README.md`](README.md) · Erros: [`../architecture/erros.md`](../architecture/erros.md) · Distribuição: [`../distribution/README.md`](../distribution/README.md)
+
+## Validação executada em 04/nov/2026
+
+Ambiente: máquina do autor — Windows 11 (26200), monitor principal 1920×1080 @ 100 %, segundo monitor retrato 1080×1920; builds Debug e Release (`artifacts/publish/win-x64`). Evidências: PNGs gerados em `Imagens\SharpShot` (dimensões conferidas com Pillow), `%LOCALAPPDATA%\SharpShot\logs`, `settings.json`, capturas da UI e saída do `dotnet test`.
+
+| Critério | Resultado | Evidência |
+|----------|-----------|-----------|
+| Captura de tela inteira por `Ctrl+Shift+1` (Debug e Release) | **validado** | `SharpShot_2026-11-04_13-55-56-743.png` 1920×1080 (e outras 5), log "Captured \\.\DISPLAY1: 1920x1080 px" |
+| Janela do SharpShot ausente da captura | **validado** | captura inspecionada; `WDA_EXCLUDEFROMCAPTURE` + `DwmFlush` |
+| Seleção de região por `Ctrl+Shift+2` (overlay nos 2 monitores, arrastar, `Enter`) | **validado** | recortes exatos 600×400, 500×300, 300×240 (2 capturas consecutivas) |
+| Overlay: máscara, borda laranja tracejada, 8 handles, badge "500 × 300", Capturar/Cancelar, `Esc` | **validado** | captura da UI do overlay |
+| Nome `SharpShot_AAAA-MM-DD_HH-mm-ss-fff.png` em `Imagens\SharpShot`, sem sobrescrita | **validado** | arquivos gerados; teste `FileNaming`/`ScreenshotStorageService` |
+| PNG sem perdas (byte a byte) | **validado** | `PngImageEncoderTests` (round-trip via `BitmapDecoder`) |
+| Toast "Captura salva com sucesso!" com Abrir pasta / Ver imagem | **validado** | toast exibido; "Ver imagem" abriu a captura |
+| Configurações persistem em `settings.json` (toggles, tema) | **validado** | JSON conferido após cada clique |
+| Iniciar com o Windows grava/remove `HKCU\...\Run` com `--minimized` | **validado** | chave conferida via registro |
+| Editor de atalhos (lápis → teclas) regrava e re-registra | **validado** | `fullScreenHotkey: Ctrl+Alt+F9` no JSON e na UI |
+| Fechar janela → oculta na bandeja, processo continua | **validado** | `IsWindowVisible=false`, processo vivo |
+| Ícone na bandeja | **validado** | log "Tray icon added"; ícone visível na barra |
+| Restaurar padrões (via UI) | implementado · **pendente** | caminho `SetHotkeyAsync` validado pelo editor; clique na UI não reproduzido no teste automatizado |
+| Menu da bandeja (ações e Sair) | implementado · **pendente** | não exercitado |
+| `--minimized`, instância única, ativação de toast com o app fechado | implementado · **pendente** | não exercitados |
+| DPI 125/150/200 %, DPI misto, HDR, Windows 10, apps em tela cheia exclusiva | **pendente** | ambiente não disponível |
+| Testes automatizados | **validado** | Core 285 ✔ · Capture 35 ✔ (Debug e Release) |
+| Pacote de release (`make-release.ps1`) e exe publicado | **validado** | zip 66,5 MB; exe publicado capturou 1920×1080 |
+| CI no GitHub | **pendente** | workflow escrito, nunca executado (sem push) |
+
+Ocorrência registrada: uma saída silenciosa do processo logo após uma captura de região em uma execução inicial (máquina com 92 % de RAM em uso e botões de toast sendo clicados na mesma execução). Depois disso foram adicionados logging global de exceções e endurecimento do overlay; não voltou a ocorrer em várias execuções. Não está confirmado como corrigido.
