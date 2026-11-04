@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SharpShot.App.Components.LogoMark"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="32"
+    Height="32"
+    IsTabStop="False">
+    <Viewbox Stretch="Uniform">
+        <Grid Width="256" Height="256">
+            <Path x:Name="TopBracketPath" Fill="{ThemeResource BrandPrimaryGradientBrush}" />
+            <Path x:Name="LowerSilverPath" Fill="{ThemeResource AppLogoSilverBrush}" />
+            <Path x:Name="LowerSilverEdgePath" Fill="{ThemeResource BrandSilverEdgeGradientBrush}" />
+            <Path x:Name="UpperSilverPath" Fill="{ThemeResource AppLogoSilverBrush}" />
+            <Path x:Name="UpperSilverEdgePath" Fill="{ThemeResource BrandSilverEdgeGradientBrush}" />
+            <Path x:Name="BottomBracketPath" Fill="{ThemeResource BrandPrimaryGradientBrush}" />
+        </Grid>
+    </Viewbox>
+</UserControl>

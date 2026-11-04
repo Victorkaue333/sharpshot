@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="SharpShot.App.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="using:SharpShot.App.Components"
+    Background="{ThemeResource AppBackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid MaxWidth="{StaticResource PageMaxWidth}" Padding="{StaticResource PagePadding}" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Brand header -->
+            <Grid Grid.Row="0" Height="120" Margin="0,0,0,8">
+                <Border CornerRadius="16" Background="{ThemeResource AppHeaderGlowBrush}" />
+                <StackPanel Orientation="Horizontal" Spacing="18" VerticalAlignment="Center" Margin="12,0">
+                    <components:LogoMark Width="64" Height="64" />
+                    <StackPanel VerticalAlignment="Center" Spacing="2">
+                        <TextBlock FontFamily="Segoe UI Variable Display" FontSize="34" FontWeight="Bold"
+                                   Foreground="{ThemeResource AppTextPrimaryBrush}">
+                            <Run Text="Sharp" /><Run Text="Shot" Foreground="{ThemeResource BrandPrimaryBrush}" />
+                        </TextBlock>
+                        <TextBlock Text="Capturas de tela com máxima qualidade"
+                                   Style="{StaticResource SecondaryTextStyle}" FontSize="14" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Rectangle Grid.Row="1" Height="1" Fill="{ThemeResource AppBorderBrush}" Margin="0,4,0,12" />
+
+            <TextBlock Grid.Row="2" Text="O que você deseja capturar?" Style="{StaticResource PageTitleStyle}" Margin="0,0,0,14" />
+
+            <!-- Capture cards -->
+            <Grid Grid.Row="3" ColumnSpacing="16" Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Style="{StaticResource CaptureCardPrimaryStyle}"
+                        Command="{x:Bind ViewModel.CaptureFullScreenCommand}"
+                        AutomationProperties.Name="Capturar tela inteira">
+                    <StackPanel Spacing="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE7F4;" FontSize="44" Foreground="{ThemeResource BrandPrimaryBrush}" HorizontalAlignment="Center" />
+                        <TextBlock Text="Capturar tela inteira" FontSize="18" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource AppTextPrimaryBrush}" HorizontalAlignment="Center" />
+                        <TextBlock Text="Captura o monitor principal na resolução original."
+                                   Style="{StaticResource SecondaryTextStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                        <components:HotkeyKeycaps Hotkey="{x:Bind ViewModel.FullScreenHotkey, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,6,0,0" />
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="1"
+                        Style="{StaticResource CaptureCardStyle}"
+                        Command="{x:Bind ViewModel.CaptureRegionCommand}"
+                        AutomationProperties.Name="Selecionar região">
+                    <StackPanel Spacing="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid Width="48" Height="44" HorizontalAlignment="Center">
+                            <Rectangle Stroke="{ThemeResource AppTextPrimaryBrush}" StrokeThickness="2.5" StrokeDashArray="3,2.5" RadiusX="2" RadiusY="2" Margin="4" />
+                            <Rectangle Width="8" Height="8" Fill="{ThemeResource AppTextPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Rectangle Width="8" Height="8" Fill="{ThemeResource AppTextPrimaryBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                            <Rectangle Width="8" Height="8" Fill="{ThemeResource AppTextPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                            <Rectangle Width="8" Height="8" Fill="{ThemeResource AppTextPrimaryBrush}" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                        </Grid>
+                        <TextBlock Text="Selecionar região" FontSize="18" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource AppTextPrimaryBrush}" HorizontalAlignment="Center" />
+                        <TextBlock Text="Escolha uma área da tela para capturar."
+                                   Style="{StaticResource SecondaryTextStyle}" TextAlignment="Center" HorizontalAlignment="Center" />
+                        <components:HotkeyKeycaps Hotkey="{x:Bind ViewModel.RegionHotkey, Mode=OneWay}" HorizontalAlignment="Center" Margin="0,6,0,0" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Save folder + format -->
+            <Grid Grid.Row="4" ColumnSpacing="16" Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource SurfaceCardStyle}">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xE8B7;" FontSize="20" Foreground="{ThemeResource AppTextPrimaryBrush}" VerticalAlignment="Center" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Salvar em:" Style="{StaticResource CaptionTextStyle}" />
+                            <TextBlock Text="{x:Bind ViewModel.SaveDirectory, Mode=OneWay}" Style="{StaticResource BodyTextStyle}"
+                                       TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" ToolTipService.ToolTip="{x:Bind ViewModel.SaveDirectory, Mode=OneWay}" />
+                        </StackPanel>
+                        <Button Grid.Column="2" Style="{StaticResource IconButtonStyle}"
+                                Command="{x:Bind ViewModel.OpenFolderCommand}"
+                                ToolTipService.ToolTip="Abrir pasta"
+                                AutomationProperties.Name="Abrir pasta de capturas">
+                            <FontIcon Glyph="&#xE8A7;" FontSize="16" />
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource SurfaceCardStyle}">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xEB9F;" FontSize="20" Foreground="{ThemeResource AppTextPrimaryBrush}" VerticalAlignment="Center" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Formato da imagem" Style="{StaticResource CaptionTextStyle}" />
+                            <TextBlock Text="{x:Bind ViewModel.FormatText}" Style="{StaticResource BodyTextStyle}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Status -->
+            <StackPanel Grid.Row="5" Spacing="10">
+                <InfoBar IsOpen="{x:Bind ViewModel.IsErrorOpen, Mode=TwoWay}"
+                         Severity="Error"
+                         Title="Falha na captura"
+                         Message="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}" />
+
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Width="22" Height="22" VerticalAlignment="Center">
+                        <FontIcon Glyph="{x:Bind ViewModel.StatusGlyph, Mode=OneWay}" FontSize="16"
+                                  Foreground="{ThemeResource BrandSuccessBrush}"
+                                  Visibility="{x:Bind ViewModel.IsStatusSuccess, Mode=OneWay}" />
+                        <FontIcon Glyph="{x:Bind ViewModel.StatusGlyph, Mode=OneWay}" FontSize="16"
+                                  Foreground="{ThemeResource BrandDangerBrush}"
+                                  Visibility="{x:Bind ViewModel.IsStatusFailure, Mode=OneWay}" />
+                        <ProgressRing IsActive="{x:Bind ViewModel.IsStatusWorking, Mode=OneWay}" Width="18" Height="18"
+                                      Visibility="{x:Bind ViewModel.IsStatusWorking, Mode=OneWay}" />
+                    </Grid>
+
+                    <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
+                               Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+
+                    <HyperlinkButton Grid.Column="2" Content="Ver última captura"
+                                     Command="{x:Bind ViewModel.OpenLastCaptureCommand}"
+                                     Visibility="{x:Bind ViewModel.HasLastCapture, Mode=OneWay}"
+                                     Foreground="{ThemeResource BrandPrimaryBrush}" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="SharpShot.App.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="using:SharpShot.App.Components"
+    Background="{ThemeResource AppBackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="{StaticResource PageMaxWidth}" Padding="{StaticResource PagePadding}" Spacing="16" HorizontalAlignment="Stretch">
+            <TextBlock Text="Sobre" Style="{StaticResource PageTitleStyle}" />
+
+            <Border Style="{StaticResource SurfaceCardStyle}" Padding="24">
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <components:LogoMark Width="80" Height="80" VerticalAlignment="Center" />
+                    <StackPanel VerticalAlignment="Center" Spacing="4">
+                        <TextBlock FontFamily="Segoe UI Variable Display" FontSize="28" FontWeight="Bold" Foreground="{ThemeResource AppTextPrimaryBrush}">
+                            <Run Text="Sharp" /><Run Text="Shot" Foreground="{ThemeResource BrandPrimaryBrush}" />
+                        </TextBlock>
+                        <TextBlock Text="{x:Bind ViewModel.VersionText}" Style="{StaticResource SecondaryTextStyle}" />
+                        <TextBlock Text="{x:Bind ViewModel.License}" Style="{StaticResource SecondaryTextStyle}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource SurfaceCardStyle}">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Descrição" FontWeight="SemiBold" Style="{StaticResource BodyTextStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.Description}" Style="{StaticResource SecondaryTextStyle}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource SurfaceCardStyle}">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Tecnologias" FontWeight="SemiBold" Style="{StaticResource BodyTextStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.Technologies}" Style="{StaticResource SecondaryTextStyle}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource SurfaceCardStyle}">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Repositório" FontWeight="SemiBold" Style="{StaticResource BodyTextStyle}" />
+                    <HyperlinkButton Content="{x:Bind ViewModel.Repository}" Command="{x:Bind ViewModel.OpenRepositoryCommand}"
+                                     Foreground="{ThemeResource BrandPrimaryBrush}" Padding="0" />
+                    <HyperlinkButton Content="Ver licença (MIT)" Command="{x:Bind ViewModel.OpenLicenseCommand}"
+                                     Foreground="{ThemeResource BrandPrimaryBrush}" Padding="0" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

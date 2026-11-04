@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SharpShot.App.Components.HotkeyEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SharpShot.App.Components"
+    IsTabStop="False">
+    <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+        <local:HotkeyKeycaps x:Name="Keycaps" />
+
+        <Border x:Name="RecordingBox"
+                Visibility="Collapsed"
+                Background="{ThemeResource AppSurfaceElevatedBrush}"
+                BorderBrush="{ThemeResource BrandPrimaryBrush}"
+                BorderThickness="1.5"
+                CornerRadius="8"
+                Padding="12,4"
+                MinWidth="200"
+                MinHeight="32">
+            <TextBlock x:Name="RecordingText"
+                       Text="Pressione as teclas…"
+                       Style="{StaticResource SecondaryTextStyle}"
+                       VerticalAlignment="Center" />
+        </Border>
+
+        <ToggleButton x:Name="EditToggle"
+                      Style="{StaticResource DefaultToggleButtonStyle}"
+                      Width="36" Height="36" Padding="0"
+                      CornerRadius="8"
+                      Background="{ThemeResource AppSurfaceElevatedBrush}"
+                      BorderBrush="{ThemeResource AppBorderBrush}"
+                      ToolTipService.ToolTip="Alterar atalho"
+                      Checked="EditToggle_Checked"
+                      Unchecked="EditToggle_Unchecked"
+                      KeyDown="EditToggle_KeyDown"
+                      LostFocus="EditToggle_LostFocus">
+            <FontIcon Glyph="&#xE70F;" FontSize="14" />
+        </ToggleButton>
+    </StackPanel>
+</UserControl>
