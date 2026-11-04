@@ -11,9 +11,9 @@
 |-------|------|---------|----------------|--------|
 | Preferências | `%LOCALAPPDATA%\SharpShot\settings.json` | JSON (UTF-8, indentado) | `SettingsService` | implementado |
 | Capturas | `<Imagens>\SharpShot\SharpShot_<timestamp>.png` (padrão) ou pasta escolhida | PNG RGB 8-bit | `ScreenshotStorageService` | implementado |
-| Logs | `%LOCALAPPDATA%\SharpShot\logs\` | texto | logger de arquivo do App | em implementação |
-| Iniciar com o Windows | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` → valor `SharpShot` | REG_SZ | App | em implementação |
-| Registro de notificações | feito pelo `AppNotificationManager` (AUMID + COM server, por usuário) | registro | App | em implementação |
+| Logs | `%LOCALAPPDATA%\SharpShot\logs\sharpshot-AAAAMMDD.log` | texto | `FileLoggerProvider` do App (um arquivo por dia, 7 mantidos) | implementado |
+| Iniciar com o Windows | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` → valor `SharpShot` = `"<caminho>\SharpShot.exe" --minimized` | REG_SZ | `StartupService` do App | implementado e validado |
+| Registro de notificações | feito pelo `AppNotificationManager` (AUMID + COM server, por usuário); desfeito em `Sair` | registro | `NotificationService` do App | implementado e validado |
 
 Regra de ouro: **nada fora do perfil do usuário** — sem `HKLM`, sem `Program Files`, sem `ProgramData`. Desinstalar é apagar o que está nesta tabela ([`distribution/instalacao.md`](distribution/instalacao.md)).
 
@@ -111,7 +111,7 @@ Arquivo parcial é apagado antes de lançar. Mensagens ao usuário: [`architectu
 
 ## Logs
 
-- Pasta: `%LOCALAPPDATA%\SharpShot\logs\` (criada pelo App — **em implementação**).
+- Pasta: `%LOCALAPPDATA%\SharpShot\logs\` (criada pelo App no primeiro log; formato `yyyy-MM-dd HH:mm:ss.fff [NÍVEL] Categoria: mensagem`).
 - Conteúdo: eventos de captura (`Captured \\.\DISPLAY1: 2560x1440 px.`), gravação (`Screenshot saved: … (N bytes).`), settings (`Settings loaded from …`), warnings de fallback (WARP, DPI, corrupt settings) e exceções com stack. **Nunca** o conteúdo da imagem, nunca caminhos de outros apps.
 - Rotação/retenção: **a definir** no App (sugestão: um arquivo por dia, manter 7).
 - Nível `Debug` vai também para o `DebugLoggerProvider` (Output do Visual Studio).

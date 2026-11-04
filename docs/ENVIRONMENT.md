@@ -12,7 +12,7 @@ flowchart LR
     nuget["NuGet: Windows App SDK 2.6.5 · Microsoft.Extensions 10.0.14 · xunit 2.9.3<br/>(Directory.Packages.props)"] --> build
     sdkwin["Windows SDK 10.0.26100 — targeting pack + BuildTools 10.0.26100.4654<br/>(vêm pelo NuGet, transitivos)"] --> build
     build --> exe["SharpShot.exe (self-contained)"]
-    exe --> runtime["Windows 10 2004+ / 11 · x64 ou arm64<br/>sem .NET nem Windows App SDK instalados"]
+    exe --> runtime["Windows 10 2004+ / 11 · x64<br/>sem .NET nem Windows App SDK instalados (runtime VC++ incluído)"]
 ```
 
 > Regra de ouro: **nada de configuração por variável de ambiente no app.** Toda preferência vive em `settings.json` ([`DATABASE.md`](DATABASE.md)). Se um dia for preciso um "modo de diagnóstico", ele entra como argumento de linha de comando documentado aqui, não como `SHARPSHOT_*` escondido.

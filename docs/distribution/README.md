@@ -24,10 +24,9 @@ Gerada por:
 
 ```bash
 dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=x64   -r win-x64   --self-contained -o artifacts/publish/win-x64
-dotnet publish src/SharpShot.App/SharpShot.App.csproj -c Release -p:Platform=arm64 -r win-arm64 --self-contained -o artifacts/publish/win-arm64
 ```
 
-Propriedades do `.csproj` que definem o resultado: `WindowsPackageType=None` · `SelfContained=true` · `WindowsAppSDKSelfContained=true` · `RuntimeIdentifiers=win-x64;win-arm64` · `PublishTrimmed=false` · `PublishReadyToRun=false` · `UseRidGraph=false` · `ApplicationIcon=Assets\SharpShot.ico` · `AssemblyName=SharpShot`.
+Propriedades do `.csproj` que definem o resultado: `WindowsPackageType=None` · `SelfContained=true` · `WindowsAppSDKSelfContained=true` · `RuntimeIdentifiers=win-x64` · `PublishTrimmed=false` · `PublishReadyToRun=false` · `UseRidGraph=false` · `ApplicationIcon=Assets\SharpShot.ico` · `AssemblyName=SharpShot`.
 
 Conteúdo esperado (**verificar na pasta publicada**):
 
@@ -69,9 +68,9 @@ O `tools/release/make-release.ps1` copia para a pasta publicada as DLLs `vcrunti
 
 1. Versão em `Directory.Build.props` (`<Version>`) e `app.manifest` (`assemblyIdentity version`) alinhadas; `CHANGELOG.md` com a seção da versão.
 2. CI verde no commit.
-3. `dotnet publish` para `win-x64` e `win-arm64` (acima). Build **Release**.
+3. `pwsh tools/release/make-release.ps1` — faz o `dotnet publish` `win-x64` em **Release**, inclui o runtime VC++ e remove `.pdb`.
 4. Smoke test da pasta (checklist abaixo), pelo menos uma vez em VM limpa.
-5. Zip: `SharpShot-<versão>-win-x64.zip` e `SharpShot-<versão>-win-arm64.zip` com a pasta `SharpShot/` na raiz do zip.
+5. Zip: `SharpShot-<versão>-win-x64.zip` (gerado pelo script em `artifacts/release/`, com `.sha256` ao lado; os arquivos ficam na raiz do zip).
 6. SHA-256 de cada zip (`Get-FileHash`) nas notas da release.
 7. Tag `v<versão>` e GitHub Release **manuais** pelo mantenedor.
 
